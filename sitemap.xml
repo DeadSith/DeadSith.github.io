@@ -2,33 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://deadsith.github.io/2015/10/10/introducing-icarus-and-its-features</loc>
-    <lastmod>2015-10-10T16:56:43+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/2015/10/10/migrate-from-jekyll</loc>
-    <lastmod>2015-10-10T13:07:31+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/2015/10/02/linked-post</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/2015/09/17/go-is-for-lovers</loc>
-    <lastmod>2015-09-17T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/2015/08/03/hugo-is-for-lovers</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/2015/06/24/creating-a-new-theme</loc>
-    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
+    <loc>https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git</loc>
+    <lastmod>2017-01-09T18:19:55+00:00</lastmod>
   </url>
   
   <url>
@@ -37,74 +12,32 @@
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/tags/go/</loc>
-    <lastmod>2015-09-17T13:47:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/tags/golang/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/tags/hugo/</loc>
-    <lastmod>2015-10-10T16:56:43+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://deadsith.github.io/</loc>
-    <lastmod>2015-10-10T16:56:43+02:00</lastmod>
+    <lastmod>2017-01-09T18:19:55+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/tags/ipsum/</loc>
-    <lastmod>2015-10-10T13:07:31+02:00</lastmod>
+    <loc>https://deadsith.github.io/tags/git/</loc>
+    <lastmod>2017-01-09T18:19:55+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/categories/lorem/</loc>
-    <lastmod>2015-10-10T13:07:31+02:00</lastmod>
+    <loc>https://deadsith.github.io/categories/git/</loc>
+    <lastmod>2017-01-09T18:19:55+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://deadsith.github.io/post/</loc>
-    <lastmod>2015-10-10T16:56:43+02:00</lastmod>
+    <lastmod>2017-01-09T18:19:55+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/tags/programming/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/categories/programming/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/categories/pseudo/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/categories/starting/</loc>
-    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/tags/static-sites/</loc>
-    <lastmod>2015-10-10T16:56:43+02:00</lastmod>
+    <loc>https://deadsith.github.io/tags/starting/</loc>
+    <lastmod>2017-01-09T18:19:55+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -114,14 +47,8 @@
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/tags/theme/</loc>
-    <lastmod>2015-10-10T16:56:43+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/categories/theme/</loc>
-    <lastmod>2015-10-10T16:56:43+02:00</lastmod>
+    <loc>https://deadsith.github.io/tags/%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%BE%D1%8E/</loc>
+    <lastmod>2017-01-09T18:19:55+00:00</lastmod>
     <priority>0</priority>
   </url>
   
