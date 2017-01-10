@@ -10,6 +10,111 @@
     <atom:link href="https://deadsith.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Основи роботи з Git</title>
+      <link>https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git</link>
+      <pubDate>Tue, 10 Jan 2017 15:50:29 +0000</pubDate>
+      
+      <guid>https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git</guid>
+      <description>&lt;h2 id=&#34;вступ&#34;&gt;Вступ&lt;/h2&gt;
+
+&lt;p&gt;У цьому уроці ми мозглянемо основи роботи з Git, а саме команди init, add та commit. Також я опишу процес створення репозиторію на GitHub та збереження інформації в цьому сервісі за допомогою команд push та pull.
+
+Під час минулогу уроку ви мали створити тестовий проект, роботу з яким ми продовжимо цього разу.&lt;/p&gt;
+
+&lt;h3 id=&#34;помилки-при-виконанні&#34;&gt;Помилки при виконанні&lt;/h3&gt;
+
+&lt;p&gt;Якщо при виконанні команд з цього керівництва виводяться поммилки, або вивід відрізняється від наведеного у прикадах, то варто заново виконати останні команди з &lt;a href=&#34;https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git/&#34;&gt;попередньої частини&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;створення-репозиторію&#34;&gt;Створення репозиторію&lt;/h2&gt;
+
+&lt;p&gt;Для створення репозиторію використовується команда init:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git init 
+Initialized empty Git repository in D:/GitTutorial/.git/ 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Внаслідок виконання цієї команди у поточній папці створюється прихована папка &lt;code&gt;.git&lt;/code&gt;. У ній зберігаєтьсю файли системи Git, самостійно вносити зміни у цю папку не варто.&lt;/p&gt;
+
+&lt;h2 id=&#34;відстеження-файлів-та-коміти&#34;&gt;Відстеження файлів та коміти&lt;/h2&gt;
+
+&lt;p&gt;Додамо в папку GitTutorial тестовий файл. Це можна зробити з Провідника, використавши контекстне меню, або з консолі:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ touch 1.cs #створює порожній файл з ім`ям 1.cs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Тепер необхідно вказати Git, що він має відстежувати даний файл. Для цього використовується команда &lt;code&gt;git add&lt;/code&gt;. Її аргументами є список файлів, які необхідно додати до поточного репозиторію. Теоретично можна додати не всі файли, але краще для цього використовувати файл &lt;a href=&#34;https://git-scm.com/docs/gitignore&#34;&gt;.gitignore&lt;/a&gt;. Я детальніше розповім про цей файл в наступній частині керівництва. Тому тут, і надалі, будемо відстежувати всі файли. Щоб самостійно не перераховувати всі файли можна використати &lt;code&gt;.&lt;/code&gt; в якості параметру.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git add . #додаємо всі файли в поточній папці 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ця команда починає відстеження всіх файлів у поточній папці і її підпапках. Тобто, якщо ми знаходимося не в корені проекту, а в якійсь із папок, то варто повернутися в корінь проекту (у випадку цього керівництва коренем є папка GitTutorial).&lt;br /&gt;
+Виконавши ці команди, ми почали відстежувати зміни у файлах. Тепер необхідно зберегти ці зміни у системі Git. Для цього використовується команда &lt;code&gt;git commit&lt;/code&gt;, вона має безліч &lt;a href=&#34;https://git-scm.com/docs/git-commit&#34;&gt;параметрів&lt;/a&gt;, проте нас цікавить лише параметр &lt;code&gt;-m&lt;/code&gt;, без якого створити коміт не вийде. &lt;code&gt;-m&lt;/code&gt; використовується для задання повідомлення коміту. Створимо перший коміт з повідомленням &lt;code&gt;First commit&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git commit -m&amp;quot;First commit&amp;quot; #створюємо новий коміт 
+[master (root-commit) f3a0000] First commit 
+1 file changed, 0 insertions(+), 0 deletions(-) 
+create mode 100644 1.cs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Для наступного кроку потрібний акаунт на GitHub, також необхідно провести початкове налаштування відповідно до попередньої частини керівництва.&lt;/p&gt;
+
+&lt;h2 id=&#34;створення-репозиторію-на-github&#34;&gt;Створення репозиторію на GitHub&lt;/h2&gt;
+
+&lt;p&gt;Для створення репозиторію треба зайти в свій аккаунт на GitHub. Після цього натиснемо на + у верхньому правому куті. &lt;img src=&#34;http://i.imgur.com/rubXZKX.png&#34; alt=&#34;Кнопка &amp;quot;створити&amp;quot;&#34; /&gt;
+Після цього відкриється сторінка створення нового репозиторію. Поки що встановіть налаштування так само, як на наступному скріншоті: &lt;img src=&#34;http://i.imgur.com/Z8EJDwG.png&#34; alt=&#34;Сторінка створення&#34; /&gt; Можна вибрати будь-яке ім`я, але варто зробити його зрозумілим. Після задання всіх параметрів, натисніть на кнопку &amp;ldquo;Create Repository&amp;rdquo;.&lt;br /&gt;
+Ми створили порожній репозиторій і перед нами відкривається з інструкціями по створенню новогу репозиторію. &lt;img src=&#34;http://i.imgur.com/jXrlzbH.png&#34; alt=&#34;Інструкція&#34; /&gt;
+Переконайтесь, що у верхній частині сторінки вибрано Https, а не SSH. Нас цікавить розділ &amp;ldquo;&amp;hellip;or push an existing repository&amp;rdquo;. Достатньо скопіювати команди з GitHub і виконати їх у Git Bash.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git remote add origin https://github.com/DeadSith/GitTutorial.git
+$git push -u origin master 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Після цього з`явиться наступне вікно, у якому необхідно ввести дані свого акаунту GitHub.
+&lt;img src=&#34;http://i.imgur.com/VAxz277.png&#34; alt=&#34;Вхід в GitHub&#34; /&gt;
+Якщо все введено правильно, то отримаємо наступний вивід:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Counting objects: 3, done. 
+Writing objects: 100% (3/3), 207 bytes | 0 bytes/s, done. 
+Total 3 (delta 0), reused 0 (delta 0) 
+To https://github.com/DeadSith/GitTutorial.git 
+* [new branch] master -&amp;gt; master 
+Branch master set up to track remote branch master from origin.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;ми-успішно-завантажили-наш-репозиторій-на-github&#34;&gt;Ми успішно завантажили наш репозиторій на GitHub&lt;/h4&gt;
+
+&lt;h2 id=&#34;команди-remote-push-та-pull&#34;&gt;Команди remote, push та pull&lt;/h2&gt;
+
+&lt;h3 id=&#34;git-remote&#34;&gt;git remote&lt;/h3&gt;
+
+&lt;p&gt;Ця команда дозволяє дозволяє перерахувати, додати та вилучити віддалені репозиторії, з якими локальний репозиторій буде синхронізовуватися.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git remote add origin &amp;lt;посилання на репозиторій&amp;gt; #додає репозиторій з ім`ям origin
+$ git remote rm origin #видаляє віддалений репозиторій з ім`ям origin
+$ git remote #перечислює всі віддалені репозиторії
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;git-push&#34;&gt;git push&lt;/h3&gt;
+
+&lt;p&gt;Push дозволяє відправити локальні коміти в віддалений репозиторій. Повна версія цієї команди має вигляд &lt;code&gt;git push &amp;lt;ім&#39;я віддаленого репозиторію&amp;gt; &amp;lt;ім&#39;я гілки&amp;gt;&lt;/code&gt;. Поки що ми будемо працювати лише з гілкою master. Команда, яку рекомендує GitHub (&lt;code&gt;git push -u origin master&lt;/code&gt;), вказує, що дана локальна гілка повинна завжди завантажуватися в &lt;code&gt;origin master&lt;/code&gt;. Це дозволить в майбутньому писати лише &lt;code&gt;git push&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;git-pull&#34;&gt;git pull&lt;/h3&gt;
+
+&lt;p&gt;Дана команда завантажує в локальну гілку зміни з віддаленої гілки, при цьому віддалена гілка має бути заданою. Якщо віддалена вітка попередньо не задана командою &lt;code&gt;git push&lt;/code&gt;, то її можна задати використовуючи &lt;code&gt;git branch -u &amp;lt;ім&#39;я віддаленого репозиторію&amp;gt; &amp;lt;ім&#39;я гілки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;продовження-роботи-з-git&#34;&gt;Продовження роботи з git&lt;/h2&gt;
+
+&lt;p&gt;Після створення репозиторію і першого завантаження робота дещо спрощується. Достатньо ввести наступні команди:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git add .
+$ git commit -m&amp;quot;&amp;lt;повідомлення&amp;gt;&amp;quot;
+$ git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Якщо роботу над проектом ведуть кілька людей на одній гілці, то варто спочатку виконати &lt;code&gt;git pull&lt;/code&gt;, а потім почати редагування. Хоча у більшості випадків це не допоможе уникнути конфліктів.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Встановлення та початкове налаштування git</title>
       <link>https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git</link>
       <pubDate>Mon, 09 Jan 2017 18:19:55 +0000</pubDate>
@@ -35,21 +140,27 @@
 &lt;p&gt;Для подальшої роботи необхідно створити навчальний проект. Я, наприклад, створив папку GitTutorial. Тествовий проект доступний в моєму профілі на &lt;a href=&#34;https://github.com/DeadSith/GitTutorial&#34;&gt;GitHub&lt;/a&gt;. Ви можете створити папку з будь-якою назвою, але я рекомендую використовувати зрозумілі назви, а не випадкові послідовності символів. Після створення папки, відкриємо її. Далі відкриємо контекстне меню. Якщо Git встановлений коректно, то в ньому мають з&amp;rsquo;явитися нові пункти: Git Bash Here та Git Gui Here. &lt;img src=&#34;http://i.imgur.com/ytEcgzf.png&#34; alt=&#34;Контекстне меню&#34; /&gt; Вибираємо Git Gui Here. Відкриється наступне вікно: &lt;img src=&#34;http://i.imgur.com/aeOlpZS.png&#34; alt=&#34;Git Bash&#34; /&gt;&lt;br /&gt;
 Якщо шлях до папки або ім&amp;rsquo;я користувача містить неанглійські символи, то вони будуть відображатися некоректно.&lt;br /&gt;
 Виправимо цю помилку:
-&lt;img src=&#34;http://i.imgur.com/Q2Jh7Ip.png&#34; alt=&#34;Покрокова інструкція&#34; /&gt;
-1. Натискаємо правою кнопкою миші на ярлик у лівому верхньому куті вікна.&lt;br /&gt;
-2. У меню, що відкрилося, вибираємо пункт Options&amp;hellip;&lt;br /&gt;
-3. Вибираємо підменю Text.&lt;br /&gt;
-4. У списку Locale вибираємо uk_UA(або ru_RU на російській версії Windows).&lt;br /&gt;
-  * Character set, за необхідності, змінюємо на UTF-8.&lt;br /&gt;
-5. Натискаємо Apply.&lt;br /&gt;
-6. Натискаємо Save та перезавантажуємо Git Bash.&lt;/p&gt;
+&lt;img src=&#34;http://i.imgur.com/Q2Jh7Ip.png&#34; alt=&#34;Покрокова інструкція&#34; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Натискаємо правою кнопкою миші на ярлик у лівому верхньому куті вікна.&lt;/li&gt;
+&lt;li&gt;У меню, що відкрилося, вибираємо пункт Options&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Вибираємо підменю Text.
+
+&lt;ul&gt;
+&lt;li&gt;У списку Locale вибираємо uk_UA(або ru_RU на російській версії Windows).&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Character set, за необхідності, змінюємо на UTF-8.&lt;/li&gt;
+&lt;li&gt;Натискаємо Apply.&lt;/li&gt;
+&lt;li&gt;Натискаємо Save та перезавантажуємо Git Bash.&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h2 id=&#34;початкове-налаштування&#34;&gt;Початкове налаштування&lt;/h2&gt;
 
 &lt;p&gt;На даному етапі у вас уже має бути акаунт на GitHub. Якщо його немає, то необхідно &lt;a href=&#34;https://github.com/join&#34;&gt;зареєструватися&lt;/a&gt;. У більшості випадків достатньо безкоштовного акаунту. На момент написання студенти можуть отримати безкоштовний повний акаунт на Github як частину &lt;a href=&#34;https://education.github.com/pack&#34;&gt;Student Developer Pack&lt;/a&gt;.&lt;br /&gt;
-Далі необхідно налаштувати Git. Тут і надалі, рядки консольного коду, які починаються з \$ вводить користувач. Рядки, які не мають цього символу на початку - це результат роботи Git, їх вводити не треба. Сам символ \$ користувач вводити не має, це автоматично робить Bash. Git Bash підтримує копіювання і вставлення тексту. Для вставлення необхідно натиснути Shift+Ins, копіювання - Ctrl+Ins. Для налаштування необхідно ввести наступні команди&lt;/p&gt;
+Далі необхідно налаштувати Git. Тут і надалі, рядки консольного коду, які починаються з &lt;code&gt;$&lt;/code&gt; вводить користувач. Рядки, які не мають цього символу на початку - це результат роботи Git, їх вводити не треба. Сам символ &lt;code&gt;$&lt;/code&gt; користувач вводити не має, це автоматично робить Bash. Git Bash підтримує копіювання і вставлення тексту. Для вставлення необхідно натиснути Shift+Ins, копіювання - Ctrl+Ins. Для налаштування необхідно ввести наступні команди&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;
+&lt;pre&gt;&lt;code&gt;
 $ git config --global user.name &amp;quot;&amp;lt;Ваше ім`я&amp;gt;&amp;quot;
 $ git config --global user.email &amp;lt;e-mail, який ви використали при реєстрації на GitHub&amp;gt;
 
