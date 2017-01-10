@@ -29,7 +29,7 @@
 <meta property="og:url" content="https://deadsith.github.io/" />
 
 
-<meta property="og:updated_time" content="2017-01-10T15:50:29&#43;00:00"/>
+<meta property="og:updated_time" content="2017-01-10T18:17:40&#43;02:00"/>
 
 
 
@@ -163,12 +163,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        2
+        3
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          3
+          4
         
         <span>
             Tags
@@ -241,6 +241,163 @@
 
     <section id="main">
     
+    
+    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+            <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git" itemprop="url">
+                <img src="http://i.imgur.com/oDiasJ3.png" class="article-banner">
+            
+            </a>
+
+            <header class="article-header">
+    <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git">
+    <h1 class="article-title" itemprop="name">
+        Вітки в Git
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-01-10 18:17:40 &#43;0200 &#43;0200" itemprop="datePublished">2017-01-10</time>
+            &middot;
+            629
+            words
+            &middot;
+            3
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/categories/git">git</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/git">git</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/branching">branching</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>
+                    <h2 id="автор-rizakrko-https-github-com-rizakrko">Автор: <a href="https://github.com/rizakrko">rizakrko</a></h2>
+
+<h2 id="коротко-про-зберігання-даних-git-ом">Коротко про зберігання даних git&rsquo;ом</h2>
+
+<p>Для чіткого розуміння механізму віток, необхідно зрозуміти, як git
+зберігає дані.
+                    <br>
+                </p>
+                <p class="article-more-link">
+                    <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git">
+                        Read more
+                    </a>
+                </p>
+            </div>
+            <footer class="article-footer">
+    <a data-url="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git" data-id="a792e12d385f9eb47fbf43864d66e9c8" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+    </article>
     
     <article class="article article-type-post" itemscope="" itemprop="blogPost">
         <div class="article-inner">
@@ -581,6 +738,32 @@
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git" class="thumbnail">
+                    
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="DSBlog" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://DeadSith.github.io/categories/git">
+                        git
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git" class="title">Вітки в Git</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-10 18:17:40 &#43;0200 &#43;0200" itemprop="datePublished">2017-01-10</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git" class="thumbnail">
                     
                         <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="DSBlog" class="thumbnail-image"></span>
@@ -648,6 +831,9 @@
         Tag cloud
     </h3>
     <div class="widget tagcloud">
+        
+        
+        <a href="https://DeadSith.github.io/tags/branching" style="font-size: 12px;">branching</a>
         
         
         <a href="https://DeadSith.github.io/tags/git" style="font-size: 12px;">git</a>
