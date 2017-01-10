@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Вітки в Git &middot; DSBlog</title>
+    <meta name="generator" content="Hugo 0.18.1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Andrii Vasylyk">
+    
+      <meta name="description" content="">
+    
+    
+    <link rel="canonical" href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git"/>
+    <link rel="icon" href="https://DeadSith.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://DeadSith.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://DeadSith.github.io/css/style.css">
+    <link rel="stylesheet" href="https://DeadSith.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://DeadSith.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://DeadSith.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Вітки в Git" />
+<meta property="og:description" content="Автор: rizakrko
+
+Коротко про зберігання даних git&rsquo;ом
+
+Для чіткого розуміння механізму віток, необхідно зрозуміти, як git
+зберігає дані." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git" />
+
+
+<meta property="og:updated_time" content="2017-01-10T18:17:40&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Вітки в Git">
+<meta itemprop="description" content="Автор: rizakrko
+
+Коротко про зберігання даних git&rsquo;ом
+
+Для чіткого розуміння механізму віток, необхідно зрозуміти, як git
+зберігає дані.">
+
+
+<meta itemprop="dateModified" content="2017-01-10T18:17:40&#43;02:00" />
+<meta itemprop="wordCount" content="629">
+
+
+
+<meta itemprop="keywords" content="git,branching,git,starting,українською," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Вітки в Git"/>
+<meta name="twitter:description" content="Автор: rizakrko
+
+Коротко про зберігання даних git&rsquo;ом
+
+Для чіткого розуміння механізму віток, необхідно зрозуміти, як git
+зберігає дані."/>
+
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://deadsith.github.io" id="logo">
+          
+          <i class="logo" style="background-image: url('https://DeadSith.github.io/css/images/logo.png')"></i>
+          
+          <span class="site-title">DSBlog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://DeadSith.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://DeadSith.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://DeadSith.github.io/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://DeadSith.github.io/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://deadsith.github.io" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://DeadSith.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://DeadSith.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://DeadSith.github.io/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://deadsith.github.io" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   		
+	    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="https://DeadSith.github.io/images/avatar.png">
+      <h2 id="name">Andrii Vasylyk</h2>
+      <h3 id="title">C# Programmer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Earth</span>
+      
+          <a id="follow" href="https://github.com/DeadSith">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        3
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          4
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/DeadSith" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <td><a href="https://DeadSith.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+	    
+
+	    
+<section id="main">
+
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+                <img src="http://i.imgur.com/oDiasJ3.png" class="article-banner">
+            
+
+            <header class="article-header">
+    <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git">
+    <h1 class="article-title" itemprop="name">
+        Вітки в Git
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-01-10 18:17:40 &#43;0200 &#43;0200" itemprop="datePublished">2017-01-10</time>
+            &middot;
+            629
+            words
+            &middot;
+            3
+            minute read
+        </div>
+
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/categories/git">git</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/git">git</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/branching">branching</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <h2 id="автор-rizakrko-https-github-com-rizakrko">Автор: <a href="https://github.com/rizakrko">rizakrko</a></h2>
+
+<h2 id="коротко-про-зберігання-даних-git-ом">Коротко про зберігання даних git&rsquo;ом</h2>
+
+<p>Для чіткого розуміння механізму віток, необхідно зрозуміти, як git
+зберігає дані.</p>
+
+<p>Основна відмінність Git&rsquo;a від будь-якої іншої СКВ - це підхід Git&rsquo;a до роботи зі своїми даними. Більшість інших систем зберігають інформацію у вигляду списку змін у файлах. Ці системи представляють інформацію у вигляді набору файлів та змін, зроблених в кожному файлі, по часу.
+
+<img src="http://i.imgur.com/ruRAiyn.png" alt="Схематичне зображення роботи інших СКВ" />
+В Git&rsquo;і використовується принципрово інший підхід: кожного разу, коли виробите комміт,тобто зберігаєте стан свого проекту в Git&rsquo;i, система запам&rsquo;ятовує, як виглядає кожен файл в даний момент, і зберігає посилання на цей знамок. Якщо файл не був змінений, то система створює посилання на попередню версію цього файлу.
+<img src="http://i.imgur.com/MQjBYtD.png" alt="Схематичне зображення роботи Git" /></p>
+
+<h2 id="коротко-про-вітки">Коротко про вітки</h2>
+
+<p>Git репозиторій представляє собою каталог, який зберігає дерево файлів. Протягом роботи ви змінюєте файли, після чого зберігаєте їх у вигляді одного комміта.
+Створимо тестовий репозиторій(для цього потрібно налаштувати git на вашій системі, детальніше:  ).</p>
+
+<pre><code class="language-shell">	$cd ~ //перехід в домашню директорію
+	$mkdir git_branching //створюємо папку, для репозиторію
+	$cd git_branching //переходимо в папку
+	$git init //ініціалізуємо пустий репозиторій
+</code></pre>
+
+<p>На даний момент репозиторій пустий, тому добавимо в нього 2 файли.</p>
+
+<pre><code class="language-shell">	$touch first_file.txt
+	$touch second_file.txt
+</code></pre>
+
+<p>Зробимо зміни в обох файлах,використовуючи будь-який доступний редактор. В даному випадку <a href="https://uk.wikipedia.org/wiki/Vim">Vim</a>.</p>
+
+<p><img src="http://i.imgur.com/CCkuvPQ.png" alt="Перший та другий файли" /></p>
+
+<p>Зафіксуємо зміни в комміт.</p>
+
+<pre><code class="language-shell">	$git add first_file.txt second_file.txt
+	$git commit -m 'initial commit'
+	[master (корневой коммит) 02231c3] initial
+	 2 files changed, 2 insertions(+)
+	 create mode 100644 first_file.txt
+	 create mode 100644 second_file.txt
+</code></pre>
+
+<p>На даний момент ваш Git репозиторій зберігає 4 об&rsquo;єкти: блоб(blob) для вмісту кожного файлу, вміст каталогу у вигляді дерева зі вказівниками на блоби збережених файлів, сам комміт з вказівником на основне дерево, метадані комміту.</p>
+
+<p><img src="http://i.imgur.com/KgrS3g7.png" alt="Візуалізація комміту" /></p>
+
+<p>Якщо ви зробите зміни в робочій директорії та зафіксуєте їх в комміт, тоді наступний комміт збереже вказівник на комміт, який передував йому.
+<img src="http://i.imgur.com/zbY2DNn.png" alt="Комміт і його батько" /></p>
+
+<h5 id="вітка-в-git-це-вказівник-на-один-з-коммітів-ім-я-основної-вітки-за-замовчуванням-master">Вітка в Git - це вказівник на один з коммітів. Ім&rsquo;я основної вітки за замовчуванням - master</h5>
+
+<p>Коли ви робите комміти, то отримуєте основну вітку, яка вказує на ваш останній комміт. Кожен комміт зсуває це вказівник вперед.</p>
+
+<hr />
+
+<p>Вітка master є звичайною віткою. Вона є практично у кожному репозиторії лишень тому, шо вона автоматично створюється командою <code>git init</code>, а більшість корисувачів не змінює її назви.</p>
+
+<hr />
+
+<h2 id="створення-нової-вітки">Створення нової вітки</h2>
+
+<p>Створюючи нову вітку, всього-навсього створюється новий вказівник для подальшої роботи. Якщо ви, наприклад, хочете створити нову вітку під назвою testing, тоді це можеливо зробити за допомогою команди <code>git branch</code>:</p>
+
+<pre><code class="language-shell">	$git branch testing
+</code></pre>
+
+<p>В результаті створюється новий вказівник на поточний комміт.
+<img src="http://i.imgur.com/yq31LNV.png" alt="Дві вітки вказують на одну і ту саму послідовність коммітів" />
+Для того, щоб Git міг визначити, яка вітка є поточною, існує спеціальний вказівник HEAD. Слід зауважити, що при створенні нової вітки перемикання вказівника HEAD не відбувається. В цьому можна переконатись, виконавши команду <code>git branch</code> не вказавши інших аргументів.</p>
+
+<pre><code class="language-shell">	$git branch
+	 * master
+	   testing
+</code></pre>
+
+<p>Ця команда виводить список всіх локальних віток, символ &ldquo;*&rdquo; вказує на поточну. Також можна використовувати команду <code>$ git log --oneline --decorate --all</code>, яка виводить історію коммітів і куди саме вказують вітки.
+<img src="http://i.imgur.com/uTpyclv.png" alt="Результат виконання команди git log" /></p>
+
+<p>##Перемикання віток
+Для того, щоб переключитись на існуючу вітку, виконайте команду <code>git checkout</code>. Переключимось на вітку <code>testing</code>.</p>
+
+<pre><code class="language-shell">	$git checkout testing
+</code></pre>
+
+<p><img src="http://i.imgur.com/pbjDcDj.png" alt="HEAD вказує на вітку testing" />
+Цим самим ми перекинемо вказівник HEAD на вітку testing.
+Давайте створимо новий комміт.</p>
+
+<pre><code class="language-shell">	$vim second_file.txt
+	$git commit -am'test change'
+</code></pre>
+
+<p><img src="http://i.imgur.com/W1F5yvk.png" alt="HEAD перемістився вперед, а master вказує той самий комміт" />
+Переключимось назад на вітку master.</p>
+
+<pre><code class="language-shell">	$git checkout master
+</code></pre>
+
+<hr />
+
+<p>При перемиканні вітки всі файли відновлюються до того стану, в якому були на момент створення коміту, на який вказує вітка. Іншими словами, вся робота, пророблена у вітці testing відкатилась до моменту її створення. Також, якщо через певні причини Git не може це зробити, то перемикання не відбудеться.
+__</p>
+
+<p>Зробимо ще одну зміну і зафіксуємо комміт.</p>
+
+<pre><code class="language-shell">	$vim first_file.txt
+	$git commit -am'some more changes'
+</code></pre>
+
+<p>Тепер історія вашого проекту розділилась на дві вітки. Вони ізольовані одна від одної. Ви можене переключатись між ними, використовуючи команди <code>branch</code>, <code>checkout</code>, <code>commit</code>, і за потреби злити їх в одну(про це в майбутніх постах).
+<img src="http://i.imgur.com/9Ynxnez.png" alt="Актуальний стан репозиторію" /></p>
+
+<p>Це все можна побачити за допомогою команди <code>git log --oneline --decorate --graph --all</code>.
+<img src="http://i.imgur.com/oxOenhj.png" alt="Результат виконання команди git log" /></p>
+
+<hr />
+
+<p>Те, чому є сенс використовувати вітки буде детальніше розглянуто в наступних постах.</p>
+
+<hr />
+            </div>
+            <footer class="article-footer">
+    <a data-url="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git" data-id="a792e12d385f9eb47fbf43864d66e9c8" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+    <a href="https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Основи роботи з Git</div>
+    </a>
+    
+
+    
+</nav>
+
+
+    </article>
+
+    
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'deadsith';
+    var disqus_identifier = 'https:\/\/deadsith.github.io\/2017\/01\/10\/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git';
+    var disqus_title = 'Вітки в Git';
+    var disqus_url = 'https:\/\/deadsith.github.io\/2017\/01\/10\/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+    
+</section>
+
+
+	    
+	    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git" class="thumbnail">
+                    
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Вітки в Git" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://DeadSith.github.io/categories/git">
+                        git
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git" class="title">Вітки в Git</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-10 18:17:40 &#43;0200 &#43;0200" itemprop="datePublished">2017-01-10</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git" class="thumbnail">
+                    
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Вітки в Git" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://DeadSith.github.io/categories/git">
+                        git
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git" class="title">Основи роботи з Git</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-10 15:50:29 &#43;0000 UTC" itemprop="datePublished">2017-01-10</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git" class="thumbnail">
+                    
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Вітки в Git" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://DeadSith.github.io/categories/git">
+                        git
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git" class="title">Встановлення та початкове налаштування git</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-09 18:19:55 &#43;0000 UTC" itemprop="datePublished">2017-01-09</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+    
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://DeadSith.github.io/tags/branching" style="font-size: 12px;">branching</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/git" style="font-size: 12px;">git</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/starting" style="font-size: 12px;">starting</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%BE%D1%8E" style="font-size: 12px;">українською</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+	    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      Powered by <a href="//gohugo.io">Hugo</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-90098943-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+<script src="https://DeadSith.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://DeadSith.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+</body>
+</html>
