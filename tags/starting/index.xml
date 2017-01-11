@@ -23,9 +23,15 @@
 
 &lt;hr /&gt;
 
+&lt;h4 id=&#34;наступна-частина-hahahugoshortcode-1hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github&#34;&gt;Наступна частина&lt;/a&gt;&lt;/h4&gt;
+
+&lt;h4 id=&#34;попередня-частина-hahahugoshortcode-2hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git&#34;&gt;Попередня частина&lt;/a&gt;&lt;/h4&gt;
+
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;помилки-при-виконанні&#34;&gt;Помилки при виконанні&lt;/h3&gt;
 
-&lt;p&gt;Якщо при виконанні команд з цього керівництва виводяться поммилки, або вивід відрізняється від наведеного у прикадах, то варто заново виконати останні команди з &lt;a href=&#34;https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git/&#34;&gt;попередньої частини&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Якщо при виконанні команд з цього керівництва виводяться поммилки, або вивід відрізняється від наведеного у прикадах, то варто заново виконати останні команди з &lt;a href=&#34;https://DeadSith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git&#34;&gt;попередньої частини&lt;/a&gt;.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -119,7 +125,7 @@ $ git push
     </item>
     
     <item>
-      <title>Встановлення та початкове налаштування git</title>
+      <title>Встановлення та початкове налаштування Git</title>
       <link>https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git</link>
       <pubDate>Mon, 09 Jan 2017 18:19:55 +0000</pubDate>
       
@@ -129,6 +135,12 @@ $ git push
 &lt;p&gt;Git — розподілена система керування версіями файлів та спільної роботи. Основними перевагами цієї системи є простота в користуванні та широкий функціонал.&lt;br /&gt;
 Це керівництво познайомить вас з основами роботи з Git та сервісом &lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;. Ця частина описує встановлення та використання Git з Windows. Користувач Linux можуть пропустити цей крок, оскільки в більшості дистрибутитів Git встановлено за промовчанням.
 &lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;наступна-частина-hahahugoshortcode-1hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git&#34;&gt;Наступна частина&lt;/a&gt;&lt;/h4&gt;
+
+&lt;hr /&gt;
 
 &lt;h2 id=&#34;встановлення&#34;&gt;Встановлення&lt;/h2&gt;
 
