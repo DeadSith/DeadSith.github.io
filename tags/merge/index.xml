@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Merge on DSBlog</title>
+    <link>https://deadsith.github.io/tags/merge/index.xml</link>
+    <description>Recent content in Merge on DSBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](//gohugo.io).</copyright>
+    <atom:link href="https://deadsith.github.io/tags/merge/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Злиття віток в Git</title>
+      <link>https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git</link>
+      <pubDate>Wed, 11 Jan 2017 20:14:00 +0200</pubDate>
+      
+      <guid>https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git</guid>
+      <description>&lt;hr /&gt;
+
+&lt;h2 id=&#34;автор-rizakrko-https-github-com-rizakrko&#34;&gt;Автор: &lt;a href=&#34;https://github.com/rizakrko&#34;&gt;rizakrko&lt;/a&gt;&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;В кінці попередньої статті про &lt;a href=&#34;https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/&#34;&gt;вітки&lt;/a&gt; ми завершили на тому, що історя репозиторію розділилась.&lt;/p&gt;
+
+&lt;p&gt;Цього разу ми розпочнемо розглядати різні способи злиття віток.&lt;/p&gt;
+
+&lt;p&gt;
+Для початку створимо ще одну вітку, &lt;code&gt;merge_test&lt;/code&gt;. Зробимо тестовий комміт, створивши новий файл, і добавивши в нього текст.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout -b merge_test
+	$vim new_file.txt
+	$git add new_file.txt
+	$git commit -am&#39;test commit&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Ви могли зауважити, що відсутня команда &lt;code&gt;$git branch merge_test&lt;/code&gt;. Для того, щоб створити гілку, і відразу ж перекикнути вказiвник HEAD на неї, істує команда &lt;code&gt;$git checkout -b &amp;lt;назва нової вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;На даний момент репозиторій має наступний вигляд:
+&lt;img src=&#34;http://i.imgur.com/zlEAtIi.png&#34; alt=&#34;Після створення вітки merge_test&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Спробуємо злити вітки &lt;code&gt;merge_test&lt;/code&gt; і &lt;code&gt;master&lt;/code&gt;. Одна з команд, яка дозволяє це зробити - &lt;code&gt;$git merge &amp;lt;назва вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Важливо зауважити, що &lt;code&gt;$git merge &amp;lt;назва вітки&amp;gt;&lt;/code&gt; зливає вказану вітку до тої, на яку вказує вказівник HEAD.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
+	$git merge merge_test
+	 Обновление 2c723a0..fbb85b1
+	 Fast-forward
+ 	 new_file.txt | 1 +
+ 	 1 file changed, 1 insertion(+)
+ 	 create mode 100644 new_file.txt
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;В даному випадку Git використав механізм так званої &amp;ldquo;перемотки&amp;rdquo;, на що вказує повідомлення &lt;code&gt;Fast-forward&lt;/code&gt;. Якщо вітка, в яку відбувається злиття є прямим батьком вітки, яку зливають, то Git просто переміщає вказівник вперед.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;В результаті злиття наш репозиторій має наступний вигляд:
+&lt;img src=&#34;http://i.imgur.com/Vp9RFTN.png&#34; alt=&#34;master i merge_test вказують на один комміт&#34; /&gt;
+Після цього можна видалити вітку &lt;code&gt;merge_test&lt;/code&gt;. Для цього використовується команда &lt;code&gt;git branch -d &amp;lt;назва вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch -d merge_test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Якщо за певних причин ви хочете видалити вітку, не зливши зміни в основну вітку, то дана команда не дозволить вам цього зробити. Для цього потрібно явно підтвердити свої наміри, замінивши ключ &lt;code&gt;-d&lt;/code&gt; на &lt;code&gt;-D&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Перекинемо вказівник HEAD на вітку &lt;code&gt;testing&lt;/code&gt;, і створимо ще один комміт.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout testing
+	$vim first_file.txt
+	$git commit -am&#39;commit in testing branch&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Зауважимо, що зміни, що були зроблені в вітці &lt;code&gt;merge_test&lt;/code&gt; не включені в вітку &lt;code&gt;testing&lt;/code&gt;. Є два варіанти, як злити ці зміни.
+Або злити вітку &lt;code&gt;master&lt;/code&gt; в вітку &lt;code&gt;testing&lt;/code&gt;, або при завершенні роботи над віткою &lt;code&gt;testing&lt;/code&gt; злити її в &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Допустимо, що ми завершили роботу над віткою &lt;code&gt;testing&lt;/code&gt;. Злиємо її у вітку &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
+	$git merge testing
+	 Merge made by the &#39;recursive&#39; strategy.
+	 first_file.txt |    1 +
+	 1 file changed, 1 insertion(+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Цього разу повідомлення відрізняється. Комміт, на який вказує вітка &lt;code&gt;testing&lt;/code&gt; не є прямим нащадком комміту, на який вказує вітка&lt;code&gt;master&lt;/code&gt;. В такому випадку Git шукає найкращого спільного предка, на основі якого буде відбуватись злиття. На відміну від інших СКВ, це відбувається автоматично, тому корисувачу немає необхідності про це піклуватись. Як результат цього злиття створюється новий комміт, який називається коммітом злиття. На даний момент наш репозиторій має наступний вигляд:
+&lt;img src=&#34;http://i.imgur.com/jkjISIC.png&#34; alt=&#34;Комміт злиття&#34; /&gt;
+Тепер можна видалити вітку &lt;code&gt;testing&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch -d testing
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;конфлікти-при-злитті-віток&#34;&gt;Конфлікти при злитті віток&lt;/h1&gt;
+
+&lt;p&gt;На жаль, не все так чудаво при злитті віток. Навіть якщо ви все виконали вірно, залишаєть висока ймовірність конфліктів. Зазвичай вони мають наступний вигляд:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$ git merge new_cool_feature
+	Auto-merging meaning_of_life
+	CONFLICT (content): Merge conflict in meaning_of_life
+	Automatic merge failed; fix conflicts and then commit the result.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Про те, що це таке, а також як це вирішити буде в наступних постах.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

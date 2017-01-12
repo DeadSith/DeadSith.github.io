@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Встановлення та початкове налаштування Git &middot; DSBlog</title>
+    <title>Злиття віток в Git &middot; DSBlog</title>
     <meta name="generator" content="Hugo 0.18.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
       <meta name="description" content="">
     
     
-    <link rel="canonical" href="https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git"/>
+    <link rel="canonical" href="https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git"/>
     <link rel="icon" href="https://DeadSith.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://DeadSith.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://DeadSith.github.io/css/style.css">
@@ -20,17 +20,21 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Встановлення та початкове налаштування Git" />
-<meta property="og:description" content="Вступ
+    <meta property="og:title" content="Злиття віток в Git" />
+<meta property="og:description" content="
 
-Git — розподілена система керування версіями файлів та спільної роботи. Основними перевагами цієї системи є простота в користуванні та широкий функціонал.
-Це керівництво познайомить вас з основами роботи з Git та сервісом GitHub. Ця частина описує встановлення та використання Git з Windows. Користувач Linux можуть пропустити цей крок, оскільки в більшості дистрибутитів Git встановлено за промовчанням.
-" />
+Автор: rizakrko
+
+
+
+В кінці попередньої статті про вітки ми завершили на тому, що історя репозиторію розділилась.
+
+Цього разу ми розпочнемо розглядати різні способи злиття віток." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git" />
+<meta property="og:url" content="https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git" />
 
 
-<meta property="og:updated_time" content="2017-01-09T18:19:55&#43;00:00"/>
+<meta property="og:updated_time" content="2017-01-11T20:14:00&#43;02:00"/>
 
 
 
@@ -43,16 +47,20 @@ Git — розподілена система керування версіям�
 
     
     
-<meta itemprop="name" content="Встановлення та початкове налаштування Git">
-<meta itemprop="description" content="Вступ
+<meta itemprop="name" content="Злиття віток в Git">
+<meta itemprop="description" content="
 
-Git — розподілена система керування версіями файлів та спільної роботи. Основними перевагами цієї системи є простота в користуванні та широкий функціонал.
-Це керівництво познайомить вас з основами роботи з Git та сервісом GitHub. Ця частина описує встановлення та використання Git з Windows. Користувач Linux можуть пропустити цей крок, оскільки в більшості дистрибутитів Git встановлено за промовчанням.
-">
+Автор: rizakrko
 
 
-<meta itemprop="dateModified" content="2017-01-09T18:19:55&#43;00:00" />
-<meta itemprop="wordCount" content="403">
+
+В кінці попередньої статті про вітки ми завершили на тому, що історя репозиторію розділилась.
+
+Цього разу ми розпочнемо розглядати різні способи злиття віток.">
+
+
+<meta itemprop="dateModified" content="2017-01-11T20:14:00&#43;02:00" />
+<meta itemprop="wordCount" content="478">
 
 
 
@@ -64,12 +72,16 @@ Git — розподілена система керування версіям�
 
 
 
-<meta name="twitter:title" content="Встановлення та початкове налаштування Git"/>
-<meta name="twitter:description" content="Вступ
+<meta name="twitter:title" content="Злиття віток в Git"/>
+<meta name="twitter:description" content="
 
-Git — розподілена система керування версіями файлів та спільної роботи. Основними перевагами цієї системи є простота в користуванні та широкий функціонал.
-Це керівництво познайомить вас з основами роботи з Git та сервісом GitHub. Ця частина описує встановлення та використання Git з Windows. Користувач Linux можуть пропустити цей крок, оскільки в більшості дистрибутитів Git встановлено за промовчанням.
-"/>
+Автор: rizakrko
+
+
+
+В кінці попередньої статті про вітки ми завершили на тому, що історя репозиторію розділилась.
+
+Цього разу ми розпочнемо розглядати різні способи злиття віток."/>
 
 
 
@@ -279,20 +291,20 @@ Git — розподілена система керування версіям�
             
 
             <header class="article-header">
-    <a href="https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git">
+    <a href="https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git">
     <h1 class="article-title" itemprop="name">
-        Встановлення та початкове налаштування Git
+        Злиття віток в Git
     </h1>
     </a>
     <div class="article-meta">
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2017-01-09 18:19:55 &#43;0000 UTC" itemprop="datePublished">2017-01-09</time>
+            <time datetime="2017-01-11 20:14:00 &#43;0200 EET" itemprop="datePublished">2017-01-11</time>
             &middot;
-            403
+            478
             words
             &middot;
-            2
+            3
             minute read
         </div>
 
@@ -322,7 +334,11 @@ Git — розподілена система керування версіям�
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://DeadSith.github.io/tags/starting">starting</a>
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/branching">branching</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/merge">merge</a>
                 &middot;
                 
                 
@@ -336,71 +352,116 @@ Git — розподілена система керування версіям�
 </header>
 
             <div class="article-entry" itemprop="articleBody">
-                <h2 id="вступ">Вступ</h2>
+                <hr />
 
-<p>Git — розподілена система керування версіями файлів та спільної роботи. Основними перевагами цієї системи є простота в користуванні та широкий функціонал.<br />
-Це керівництво познайомить вас з основами роботи з Git та сервісом <a href="https://github.com">GitHub</a>. Ця частина описує встановлення та використання Git з Windows. Користувач Linux можуть пропустити цей крок, оскільки в більшості дистрибутитів Git встановлено за промовчанням.
-</p>
+<h2 id="автор-rizakrko-https-github-com-rizakrko">Автор: <a href="https://github.com/rizakrko">rizakrko</a></h2>
 
 <hr />
 
-<h4 id="наступна-частина-hahahugoshortcode-1hbhb"><a href="/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git">Наступна частина</a></h4>
+<p>В кінці попередньої статті про <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/">вітки</a> ми завершили на тому, що історя репозиторію розділилась.</p>
+
+<p>Цього разу ми розпочнемо розглядати різні способи злиття віток.</p>
+
+<p>
+Для початку створимо ще одну вітку, <code>merge_test</code>. Зробимо тестовий комміт, створивши новий файл, і добавивши в нього текст.</p>
+
+<pre><code class="language-bash">	$git checkout -b merge_test
+	$vim new_file.txt
+	$git add new_file.txt
+	$git commit -am'test commit'
+</code></pre>
 
 <hr />
 
-<h2 id="встановлення">Встановлення</h2>
+<p>Ви могли зауважити, що відсутня команда <code>$git branch merge_test</code>. Для того, щоб створити гілку, і відразу ж перекикнути вказiвник HEAD на неї, істує команда <code>$git checkout -b &lt;назва нової вітки&gt;</code>.</p>
 
-<p>Завантажити Git для Windows можна за наступним посиланням: <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. Завантаження має початися автоматично; якщо цього не відбулося необхідно вибрати один з варіантів Git for Windows Setup. Після завантаження запускаємо установочний файл і натискаємо Next &gt; поки не з&rsquo;явиться <img src="http://i.imgur.com/2scpzzn.png" alt="Крок 1" /> У цьому і всіх наступних меню необхідно вибирати сам такі елементи, як на скріншотах.<br />
-<img src="http://i.imgur.com/RcBVGlA.png" alt="Крок 2" />
-<img src="http://i.imgur.com/5TEC618.png" alt="Крок 3" />
-<img src="http://i.imgur.com/Q50W481.png" alt="Крок 4" />
-<img src="http://i.imgur.com/yzHvHsl.png" alt="Крок 5" />
-<img src="http://i.imgur.com/5VnXt5Y.png" alt="Крок 6" /></p>
+<hr />
 
-<h2 id="перший-запуск">Перший запуск</h2>
+<p>На даний момент репозиторій має наступний вигляд:
+<img src="http://i.imgur.com/zlEAtIi.png" alt="Після створення вітки merge_test" /></p>
 
-<p>Для подальшої роботи необхідно створити навчальний проект. Я, наприклад, створив папку GitTutorial. Тествовий проект доступний в моєму профілі на <a href="https://github.com/DeadSith/GitTutorial">GitHub</a>. Ви можете створити папку з будь-якою назвою, але я рекомендую використовувати зрозумілі назви, а не випадкові послідовності символів. Після створення папки, відкриємо її. Далі відкриємо контекстне меню. Якщо Git встановлений коректно, то в ньому мають з&rsquo;явитися нові пункти: Git Bash Here та Git Gui Here. <img src="http://i.imgur.com/ytEcgzf.png" alt="Контекстне меню" /> Вибираємо Git Bash Here. Відкриється наступне вікно: <img src="http://i.imgur.com/aeOlpZS.png" alt="Git Bash" /><br />
-Якщо шлях до папки або ім&rsquo;я користувача містить неанглійські символи, то вони будуть відображатися некоректно.<br />
-Виправимо цю помилку:
-<img src="http://i.imgur.com/Q2Jh7Ip.png" alt="Покрокова інструкція" /></p>
+<p>Спробуємо злити вітки <code>merge_test</code> і <code>master</code>. Одна з команд, яка дозволяє це зробити - <code>$git merge &lt;назва вітки&gt;</code>.</p>
 
-<ol>
-<li>Натискаємо правою кнопкою миші на ярлик у лівому верхньому куті вікна.</li>
-<li>У меню, що відкрилося, вибираємо пункт Options&hellip;</li>
-<li>Вибираємо підменю Text.
+<hr />
 
-<ul>
-<li>У списку Locale вибираємо uk_UA(або ru_RU на російській версії Windows).</li>
-</ul></li>
-<li>Character set, за необхідності, змінюємо на UTF-8.</li>
-<li>Натискаємо Apply.</li>
-<li>Натискаємо Save та перезавантажуємо Git Bash.</li>
-</ol>
+<p>Важливо зауважити, що <code>$git merge &lt;назва вітки&gt;</code> зливає вказану вітку до тої, на яку вказує вказівник HEAD.</p>
 
-<h2 id="початкове-налаштування">Початкове налаштування</h2>
+<hr />
 
-<p>На даному етапі у вас уже має бути акаунт на GitHub. Якщо його немає, то необхідно <a href="https://github.com/join">зареєструватися</a>. У більшості випадків достатньо безкоштовного акаунту. На момент написання студенти можуть отримати безкоштовний повний акаунт на Github як частину <a href="https://education.github.com/pack">Student Developer Pack</a>.<br />
-Далі необхідно налаштувати Git. Тут і надалі, рядки консольного коду, які починаються з <code>$</code> вводить користувач. Рядки, які не мають цього символу на початку - це результат роботи Git, їх вводити не треба. Сам символ <code>$</code> користувач вводити не має, це автоматично робить Bash. Git Bash підтримує копіювання і вставлення тексту. Для вставлення необхідно натиснути Shift+Ins, копіювання - Ctrl+Ins. Для налаштування необхідно ввести наступні команди</p>
-
-<pre><code>
-$ git config --global user.name &quot;&lt;Ваше ім`я&gt;&quot;
-$ git config --global user.email &lt;e-mail, який ви використали при реєстрації на GitHub&gt;
+<pre><code class="language-bash">	$git checkout master
+	$git merge merge_test
+	 Обновление 2c723a0..fbb85b1
+	 Fast-forward
+ 	 new_file.txt | 1 +
+ 	 1 file changed, 1 insertion(+)
+ 	 create mode 100644 new_file.txt
 
 </code></pre>
 
-<p>E-mail має збігатися для коректної роботи GitHub.</p>
+<hr />
 
-<h2 id="завершення">Завершення</h2>
+<p>В даному випадку Git використав механізм так званої &ldquo;перемотки&rdquo;, на що вказує повідомлення <code>Fast-forward</code>. Якщо вітка, в яку відбувається злиття є прямим батьком вітки, яку зливають, то Git просто переміщає вказівник вперед.</p>
 
-<p>На цьому установка і перше налаштування Git завершене. У наступній частині я познайомлю вас з основами роботи з Git.</p>
+<hr />
+
+<p>В результаті злиття наш репозиторій має наступний вигляд:
+<img src="http://i.imgur.com/Vp9RFTN.png" alt="master i merge_test вказують на один комміт" />
+Після цього можна видалити вітку <code>merge_test</code>. Для цього використовується команда <code>git branch -d &lt;назва вітки&gt;</code>.</p>
+
+<pre><code class="language-bash">	$git branch -d merge_test
+</code></pre>
+
+<hr />
+
+<p>Якщо за певних причин ви хочете видалити вітку, не зливши зміни в основну вітку, то дана команда не дозволить вам цього зробити. Для цього потрібно явно підтвердити свої наміри, замінивши ключ <code>-d</code> на <code>-D</code>.</p>
+
+<hr />
+
+<p>Перекинемо вказівник HEAD на вітку <code>testing</code>, і створимо ще один комміт.</p>
+
+<pre><code class="language-bash">	$git checkout testing
+	$vim first_file.txt
+	$git commit -am'commit in testing branch'
+</code></pre>
+
+<p>Зауважимо, що зміни, що були зроблені в вітці <code>merge_test</code> не включені в вітку <code>testing</code>. Є два варіанти, як злити ці зміни.
+Або злити вітку <code>master</code> в вітку <code>testing</code>, або при завершенні роботи над віткою <code>testing</code> злити її в <code>master</code>.</p>
+
+<p>Допустимо, що ми завершили роботу над віткою <code>testing</code>. Злиємо її у вітку <code>master</code>.</p>
+
+<pre><code class="language-bash">	$git checkout master
+	$git merge testing
+	 Merge made by the 'recursive' strategy.
+	 first_file.txt |    1 +
+	 1 file changed, 1 insertion(+)
+</code></pre>
+
+<p>Цього разу повідомлення відрізняється. Комміт, на який вказує вітка <code>testing</code> не є прямим нащадком комміту, на який вказує вітка<code>master</code>. В такому випадку Git шукає найкращого спільного предка, на основі якого буде відбуватись злиття. На відміну від інших СКВ, це відбувається автоматично, тому корисувачу немає необхідності про це піклуватись. Як результат цього злиття створюється новий комміт, який називається коммітом злиття. На даний момент наш репозиторій має наступний вигляд:
+<img src="http://i.imgur.com/jkjISIC.png" alt="Комміт злиття" />
+Тепер можна видалити вітку <code>testing</code>.</p>
+
+<pre><code class="language-bash">	$git branch -d testing
+</code></pre>
+
+<h1 id="конфлікти-при-злитті-віток">Конфлікти при злитті віток</h1>
+
+<p>На жаль, не все так чудаво при злитті віток. Навіть якщо ви все виконали вірно, залишаєть висока ймовірність конфліктів. Зазвичай вони мають наступний вигляд:</p>
+
+<pre><code class="language-bash">	$ git merge new_cool_feature
+	Auto-merging meaning_of_life
+	CONFLICT (content): Merge conflict in meaning_of_life
+	Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+
+<p>Про те, що це таке, а також як це вирішити буде в наступних постах.</p>
             </div>
             <footer class="article-footer">
-    <a data-url="https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git" data-id="0043382468f1839e52e1f56d1041484f" class="article-share-link">
+    <a data-url="https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git" data-id="c11be726d823d7fabdee2ac85967a15c" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
     
-    <a href="https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git/#disqus_thread" class="article-comment-link">
+    <a href="https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git/#disqus_thread" class="article-comment-link">
         Comments
     </a>
     
@@ -476,13 +537,20 @@ $ git config --global user.email &lt;e-mail, який ви використал�
         
 <nav id="article-nav">
     
+    <a href="https://deadsith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">git clone та додаткові можливості GitHub</div>
+    </a>
+    
 
     
-    <a href="https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="https://deadsith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Newer
       </strong>
-      <div class="article-nav-title">Основи роботи з Git</div>
+      <div class="article-nav-title">Інформаційні команди Git</div>
     </a>
     
 </nav>
@@ -496,9 +564,9 @@ $ git config --global user.email &lt;e-mail, який ви використал�
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'deadsith';
-    var disqus_identifier = 'https:\/\/deadsith.github.io\/2017\/01\/09\/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git';
-    var disqus_title = 'Встановлення та початкове налаштування Git';
-    var disqus_url = 'https:\/\/deadsith.github.io\/2017\/01\/09\/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git';
+    var disqus_identifier = 'https:\/\/deadsith.github.io\/2017\/01\/11\/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git';
+    var disqus_title = 'Злиття віток в Git';
+    var disqus_url = 'https:\/\/deadsith.github.io\/2017\/01\/11\/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -528,7 +596,7 @@ $ git config --global user.email &lt;e-mail, який ви використал�
                 <div class="item-thumbnail">
                     <a href="https://deadsith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git" class="thumbnail">
                     
-                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Встановлення та початкове налаштування Git" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Злиття віток в Git" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -554,7 +622,7 @@ $ git config --global user.email &lt;e-mail, який ви використал�
                 <div class="item-thumbnail">
                     <a href="https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git" class="thumbnail">
                     
-                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Встановлення та початкове налаштування Git" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Злиття віток в Git" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -580,7 +648,7 @@ $ git config --global user.email &lt;e-mail, який ви використал�
                 <div class="item-thumbnail">
                     <a href="https://deadsith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github" class="thumbnail">
                     
-                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Встановлення та початкове налаштування Git" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Злиття віток в Git" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -606,7 +674,7 @@ $ git config --global user.email &lt;e-mail, який ви використал�
                 <div class="item-thumbnail">
                     <a href="https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git" class="thumbnail">
                     
-                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Встановлення та початкове налаштування Git" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Злиття віток в Git" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -632,7 +700,7 @@ $ git config --global user.email &lt;e-mail, який ви використал�
                 <div class="item-thumbnail">
                     <a href="https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git" class="thumbnail">
                     
-                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Встановлення та початкове налаштування Git" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Злиття віток в Git" class="thumbnail-image"></span>
                     
                     </a>
                 </div>

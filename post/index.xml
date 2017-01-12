@@ -7,8 +7,246 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](//gohugo.io).</copyright>
-    <lastBuildDate>Wed, 11 Jan 2017 14:00:35 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jan 2017 13:28:55 +0200</lastBuildDate>
     <atom:link href="https://deadsith.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Інформаційні команди Git</title>
+      <link>https://deadsith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git</link>
+      <pubDate>Thu, 12 Jan 2017 13:28:55 +0200</pubDate>
+      
+      <guid>https://deadsith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git</guid>
+      <description>&lt;h2 id=&#34;вступ&#34;&gt;Вступ&lt;/h2&gt;
+
+&lt;p&gt;Цього разу ми розберемо команди Git, які дозволяють отримати інформацію про коміти і зміни у них.
+
+Git має низку різних інформаційних команд(status, log, diff, show). Є ще кілька команд, але вони призначені для роботи з різними гілками.
+Для цього уроку пропоную використати чужий репозиторій, який має велику кількість комітів. Ви можете самостійно знайти якийсь репозиторій, або клонувати &lt;a href=&#34;https://github.com/DeadSith/Identity&#34;&gt;цей&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;попередня-частина-hahahugoshortcode-1hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github&#34;&gt;Попередня частина&lt;/a&gt;&lt;/h4&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;git-status&#34;&gt;git status&lt;/h2&gt;
+
+&lt;p&gt;Status відображає поточний стан репозиторію, а саме які файли були змінені, чи вони відстежуються тощо. Виконаємо команду на щойно клонованому репозиторію.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$  git status
+На гілці master
+Ваша гілка оновлена у відповідности з «origin/master».
+nothing to commit, working tree clean
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Тепер створимо новий файл і виконаємо команду знову.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ touch example.txt
+$ git status
+На гілці master
+Ваша гілка оновлена у відповідности з «origin/master».
+Несупроводжувані файли:
+  (використовуйте &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; щоб включити те, що повинно бути здійснено)
+
+	example.txt
+
+немає змін, доданих у комміт, але існують несупроводжувані файли (використовуйте &amp;quot;git add&amp;quot; щоб додати файли для супроводжування)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Почнемо відстежувати цей файл та повторимо команду.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git status
+На гілці master
+Ваша гілка оновлена у відповідности з «origin/master».
+Зміни для здійснення:
+  (використовуйте &amp;quot;git reset HEAD &amp;lt;file&amp;gt;...&amp;quot; щоб прибрати з буфера)
+
+	новий файл:    example.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;git-log&#34;&gt;git log&lt;/h2&gt;
+
+&lt;p&gt;Log виводить повну історію комітів поточної вітки. Ніяких параметрів передавати не потрібно, досить лише написати &lt;code&gt;git log&lt;/code&gt;. При цьому відкриється нове вікно консолі, у якому виведеться історія. Вікно можна закрити натиснувши &lt;code&gt;q&lt;/code&gt;(при цьому має бути увімкнена англійська розкладка клавіатури). Тут і надалі в цьому уроці я наводитму лише частини виводу.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git log
+commit d4fdb754c5d5d50ced3e5aa233b83a3f0749d1d1
+Author: DeadSith &amp;lt;deadsith@hotmail.com&amp;gt;
+Date:   Mon Dec 12 20:01:47 2016 +0000
+
+    Reverted profile viewing
+
+commit 0e45267bf0e6f562ef4dbe2ae344e858aee76468
+Author: DeadSith &amp;lt;deadsith@hotmail.com&amp;gt;
+Date:   Mon Dec 12 19:06:18 2016 +0000
+
+    Add support for colaborators
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;git-diff&#34;&gt;git diff&lt;/h2&gt;
+
+&lt;p&gt;Diff показує різницю між двома довільними комітами. Існує багато різних форм і параметрів для цієї команди. Я розповім лише про основні варіанти, про інші можна почитати в &lt;a href=&#34;https://git-scm.com/docs/git-diff&#34;&gt;офіційній документації&lt;/a&gt;.&lt;br /&gt;
+Додамо довільний текст у файл example.txt(у будь-якому текстовому редакторі) і виконаємо команду &lt;code&gt;git diff&lt;/code&gt;. Унаслідок цього відкриється нове вікно в консолі, у яке буде виведено різницю між поточним станом репозиторію і останнім комітом.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;diff --git a/example.txt b/example.txt
+index e69de29..15cdaf1 100644
+--- a/example.txt
++++ b/example.txt
+@@ -0,0 +1 @@
++Lorem ipsum.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;У вікні показано, які саме файли змінено та зміни у них. Додані рядки починаються з &lt;code&gt;+&lt;/code&gt;, видален з &lt;code&gt;-&lt;/code&gt;. Щоб вимкнути це вікно, треба натиснути &lt;code&gt;q&lt;/code&gt;.
+Тепер видалимо файл example.txt і збережемо зміни в Git.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rm ./example.txt
+$ git add .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Інша форма цієї команди дозволяє подивитись різницю між двома комітами. Для цього необхідно знати їх hash, який можна отримати з команди &lt;code&gt;git log&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# виводить зміни між 2 комітами з мого репозиторію. 
+$ git diff 868b63a7a7c58a2d088e22e70b0065c2425ebd29 63ce0c65005417566e0d6ced495ab8ea37ad09eb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Якщо ввести лише один hash, то вказаний коміт буде порівнюватися з найновішим комітом поточної вітки.&lt;br /&gt;
+&lt;strong&gt;Зверніть увагу:&lt;/strong&gt; при зміні хешів місцями вивід теж зміниться.&lt;/p&gt;
+
+&lt;h2 id=&#34;git-show&#34;&gt;git show&lt;/h2&gt;
+
+&lt;p&gt;Show виводить інформацію про коміт та всі зміни у ньому. Іншими словами, він поєднує вивід &lt;code&gt;git log&lt;/code&gt; та &lt;code&gt;git diff&lt;/code&gt;.  Вивід цієї команди також відкривається у новомі вікні консолі, з якого можна вийти натиснувши &lt;code&gt;q&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git show 868b63a7a7c58a2d088e22e70b0065c2425ebd29
+commit 868b63a7a7c58a2d088e22e70b0065c2425ebd29
+Author: DeadSith &amp;lt;deadsith@hotmail.com&amp;gt;
+Date:   Wed Dec 7 16:59:12 2016 +0000
+
+    Started implementing changes viewing
+
+diff --git a/src/Identity/Controllers/HomeController.cs b/src/Identity/Controllers/HomeController.cs
+index da3c624..3d71206 100755
+--- a/src/Identity/Controllers/HomeController.cs
++++ b/src/Identity/Controllers/HomeController.cs
+@@ -119,7 +119,7 @@ namespace Identity.Controllers
+         {
+             var repo =
+                _context.Repos.Include(r =&amp;gt; r.Author)
+-                   .First(
++                   .FirstOrDefault(
+                        r =&amp;gt;
+                            String.Equals(r.RepoName.ToLower(), repoName.ToLower()) &amp;amp;&amp;amp;
+                            String.Equals(r.Author.UserName.ToLower(), userName.ToLower()));
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Злиття віток в Git</title>
+      <link>https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git</link>
+      <pubDate>Wed, 11 Jan 2017 20:14:00 +0200</pubDate>
+      
+      <guid>https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git</guid>
+      <description>&lt;hr /&gt;
+
+&lt;h2 id=&#34;автор-rizakrko-https-github-com-rizakrko&#34;&gt;Автор: &lt;a href=&#34;https://github.com/rizakrko&#34;&gt;rizakrko&lt;/a&gt;&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;В кінці попередньої статті про &lt;a href=&#34;https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/&#34;&gt;вітки&lt;/a&gt; ми завершили на тому, що історя репозиторію розділилась.&lt;/p&gt;
+
+&lt;p&gt;Цього разу ми розпочнемо розглядати різні способи злиття віток.&lt;/p&gt;
+
+&lt;p&gt;
+Для початку створимо ще одну вітку, &lt;code&gt;merge_test&lt;/code&gt;. Зробимо тестовий комміт, створивши новий файл, і добавивши в нього текст.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout -b merge_test
+	$vim new_file.txt
+	$git add new_file.txt
+	$git commit -am&#39;test commit&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Ви могли зауважити, що відсутня команда &lt;code&gt;$git branch merge_test&lt;/code&gt;. Для того, щоб створити гілку, і відразу ж перекикнути вказiвник HEAD на неї, істує команда &lt;code&gt;$git checkout -b &amp;lt;назва нової вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;На даний момент репозиторій має наступний вигляд:
+&lt;img src=&#34;http://i.imgur.com/zlEAtIi.png&#34; alt=&#34;Після створення вітки merge_test&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Спробуємо злити вітки &lt;code&gt;merge_test&lt;/code&gt; і &lt;code&gt;master&lt;/code&gt;. Одна з команд, яка дозволяє це зробити - &lt;code&gt;$git merge &amp;lt;назва вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Важливо зауважити, що &lt;code&gt;$git merge &amp;lt;назва вітки&amp;gt;&lt;/code&gt; зливає вказану вітку до тої, на яку вказує вказівник HEAD.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
+	$git merge merge_test
+	 Обновление 2c723a0..fbb85b1
+	 Fast-forward
+ 	 new_file.txt | 1 +
+ 	 1 file changed, 1 insertion(+)
+ 	 create mode 100644 new_file.txt
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;В даному випадку Git використав механізм так званої &amp;ldquo;перемотки&amp;rdquo;, на що вказує повідомлення &lt;code&gt;Fast-forward&lt;/code&gt;. Якщо вітка, в яку відбувається злиття є прямим батьком вітки, яку зливають, то Git просто переміщає вказівник вперед.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;В результаті злиття наш репозиторій має наступний вигляд:
+&lt;img src=&#34;http://i.imgur.com/Vp9RFTN.png&#34; alt=&#34;master i merge_test вказують на один комміт&#34; /&gt;
+Після цього можна видалити вітку &lt;code&gt;merge_test&lt;/code&gt;. Для цього використовується команда &lt;code&gt;git branch -d &amp;lt;назва вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch -d merge_test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Якщо за певних причин ви хочете видалити вітку, не зливши зміни в основну вітку, то дана команда не дозволить вам цього зробити. Для цього потрібно явно підтвердити свої наміри, замінивши ключ &lt;code&gt;-d&lt;/code&gt; на &lt;code&gt;-D&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Перекинемо вказівник HEAD на вітку &lt;code&gt;testing&lt;/code&gt;, і створимо ще один комміт.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout testing
+	$vim first_file.txt
+	$git commit -am&#39;commit in testing branch&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Зауважимо, що зміни, що були зроблені в вітці &lt;code&gt;merge_test&lt;/code&gt; не включені в вітку &lt;code&gt;testing&lt;/code&gt;. Є два варіанти, як злити ці зміни.
+Або злити вітку &lt;code&gt;master&lt;/code&gt; в вітку &lt;code&gt;testing&lt;/code&gt;, або при завершенні роботи над віткою &lt;code&gt;testing&lt;/code&gt; злити її в &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Допустимо, що ми завершили роботу над віткою &lt;code&gt;testing&lt;/code&gt;. Злиємо її у вітку &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
+	$git merge testing
+	 Merge made by the &#39;recursive&#39; strategy.
+	 first_file.txt |    1 +
+	 1 file changed, 1 insertion(+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Цього разу повідомлення відрізняється. Комміт, на який вказує вітка &lt;code&gt;testing&lt;/code&gt; не є прямим нащадком комміту, на який вказує вітка&lt;code&gt;master&lt;/code&gt;. В такому випадку Git шукає найкращого спільного предка, на основі якого буде відбуватись злиття. На відміну від інших СКВ, це відбувається автоматично, тому корисувачу немає необхідності про це піклуватись. Як результат цього злиття створюється новий комміт, який називається коммітом злиття. На даний момент наш репозиторій має наступний вигляд:
+&lt;img src=&#34;http://i.imgur.com/jkjISIC.png&#34; alt=&#34;Комміт злиття&#34; /&gt;
+Тепер можна видалити вітку &lt;code&gt;testing&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch -d testing
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;конфлікти-при-злитті-віток&#34;&gt;Конфлікти при злитті віток&lt;/h1&gt;
+
+&lt;p&gt;На жаль, не все так чудаво при злитті віток. Навіть якщо ви все виконали вірно, залишаєть висока ймовірність конфліктів. Зазвичай вони мають наступний вигляд:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$ git merge new_cool_feature
+	Auto-merging meaning_of_life
+	CONFLICT (content): Merge conflict in meaning_of_life
+	Automatic merge failed; fix conflicts and then commit the result.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Про те, що це таке, а також як це вирішити буде в наступних постах.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>git clone та додаткові можливості GitHub</title>
@@ -24,7 +262,9 @@
 
 &lt;hr /&gt;
 
-&lt;h4 id=&#34;попередня-частина-hahahugoshortcode-1hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git&#34;&gt;Попередня частина&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;наступна-частина-hahahugoshortcode-1hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git&#34;&gt;Наступна частина&lt;/a&gt;&lt;/h4&gt;
+
+&lt;h4 id=&#34;попередня-частина-hahahugoshortcode-2hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git&#34;&gt;Попередня частина&lt;/a&gt;&lt;/h4&gt;
 
 &lt;hr /&gt;
 
@@ -310,7 +550,8 @@ GitHub має велику кількість шаблонів цього фай
 
 &lt;h2 id=&#34;створення-репозиторію&#34;&gt;Створення репозиторію&lt;/h2&gt;
 
-&lt;p&gt;Для створення репозиторію використовується команда init:&lt;/p&gt;
+&lt;p&gt;Відкриємо папку, створену в минулому уроці та відкриємо в ній Git Bash.
+Для створення репозиторію використовується команда init:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git init 
 Initialized empty Git repository in D:/GitTutorial/.git/ 
@@ -320,7 +561,7 @@ Initialized empty Git repository in D:/GitTutorial/.git/
 
 &lt;h2 id=&#34;відстеження-файлів-та-коміти&#34;&gt;Відстеження файлів та коміти&lt;/h2&gt;
 
-&lt;p&gt;Додамо в папку GitTutorial тестовий файл. Це можна зробити з Провідника, використавши контекстне меню, або з консолі:&lt;/p&gt;
+&lt;p&gt;Додамо в папку GitTutorial тестовий файл. Це можна зробити з Провідника, використавши контекстне меню, або з Git Bash:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ touch 1.cs #створює порожній файл з ім`ям 1.cs
 &lt;/code&gt;&lt;/pre&gt;
@@ -426,7 +667,7 @@ $ git push
 
 &lt;h2 id=&#34;перший-запуск&#34;&gt;Перший запуск&lt;/h2&gt;
 
-&lt;p&gt;Для подальшої роботи необхідно створити навчальний проект. Я, наприклад, створив папку GitTutorial. Тествовий проект доступний в моєму профілі на &lt;a href=&#34;https://github.com/DeadSith/GitTutorial&#34;&gt;GitHub&lt;/a&gt;. Ви можете створити папку з будь-якою назвою, але я рекомендую використовувати зрозумілі назви, а не випадкові послідовності символів. Після створення папки, відкриємо її. Далі відкриємо контекстне меню. Якщо Git встановлений коректно, то в ньому мають з&amp;rsquo;явитися нові пункти: Git Bash Here та Git Gui Here. &lt;img src=&#34;http://i.imgur.com/ytEcgzf.png&#34; alt=&#34;Контекстне меню&#34; /&gt; Вибираємо Git Gui Here. Відкриється наступне вікно: &lt;img src=&#34;http://i.imgur.com/aeOlpZS.png&#34; alt=&#34;Git Bash&#34; /&gt;&lt;br /&gt;
+&lt;p&gt;Для подальшої роботи необхідно створити навчальний проект. Я, наприклад, створив папку GitTutorial. Тествовий проект доступний в моєму профілі на &lt;a href=&#34;https://github.com/DeadSith/GitTutorial&#34;&gt;GitHub&lt;/a&gt;. Ви можете створити папку з будь-якою назвою, але я рекомендую використовувати зрозумілі назви, а не випадкові послідовності символів. Після створення папки, відкриємо її. Далі відкриємо контекстне меню. Якщо Git встановлений коректно, то в ньому мають з&amp;rsquo;явитися нові пункти: Git Bash Here та Git Gui Here. &lt;img src=&#34;http://i.imgur.com/ytEcgzf.png&#34; alt=&#34;Контекстне меню&#34; /&gt; Вибираємо Git Bash Here. Відкриється наступне вікно: &lt;img src=&#34;http://i.imgur.com/aeOlpZS.png&#34; alt=&#34;Git Bash&#34; /&gt;&lt;br /&gt;
 Якщо шлях до папки або ім&amp;rsquo;я користувача містить неанглійські символи, то вони будуть відображатися некоректно.&lt;br /&gt;
 Виправимо цю помилку:
 &lt;img src=&#34;http://i.imgur.com/Q2Jh7Ip.png&#34; alt=&#34;Покрокова інструкція&#34; /&gt;&lt;/p&gt;
