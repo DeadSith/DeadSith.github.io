@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Asp net core: mapping areas to subdomains &middot; Sith Blog</title>
+    <meta name="generator" content="Hugo 0.21" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Andrii Vasylyk">
+    
+      <meta name="description" content="Asp net core: mapping areas to subdomains">
+    
+    
+    <link rel="canonical" href="https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/"/>
+    <link rel="icon" href="https://DeadSith.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://DeadSith.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://DeadSith.github.io/css/style.css">
+    <link rel="stylesheet" href="https://DeadSith.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://DeadSith.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://DeadSith.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Asp net core: mapping areas to subdomains" />
+<meta property="og:description" content="Asp net core: mapping areas to subdomains" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/" />
+
+
+
+<meta property="article:published_time" content="2017-05-30T21:03:43&#43;03:00"/>
+<meta property="article:modified_time" content="2017-05-30T21:03:43&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Asp net core: mapping areas to subdomains">
+<meta itemprop="description" content="Asp net core: mapping areas to subdomains">
+
+
+<meta itemprop="dateModified" content="2017-05-30T21:03:43&#43;03:00" />
+<meta itemprop="wordCount" content="491">
+
+
+
+<meta itemprop="keywords" content="dotnet,git,area,asp-net,asp-net-core,branching,git,merge,net-core,routing,starting,subdomain,українською," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Asp net core: mapping areas to subdomains"/>
+<meta name="twitter:title" content="Asp net core: mapping areas to subdomains"/>
+<meta name="twitter:description" content="Asp net core: mapping areas to subdomains"/>
+
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://DeadSith.github.io" id="logo">
+          
+          <i class="logo" style="background-image: url('https://DeadSith.github.io/css/images/logo.png')"></i>
+          
+          <span class="site-title">Sith Blog</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://DeadSith.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://DeadSith.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://DeadSith.github.io/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://DeadSith.github.io/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://DeadSith.github.io" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://DeadSith.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://DeadSith.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://DeadSith.github.io/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://DeadSith.github.io" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://DeadSith.github.io/images/avatar.png">
+      
+      <h2 id="name">Andrii Vasylyk</h2>
+      <h3 id="title">C# Programmer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Earth</span>
+      
+          <a id="follow" href="https://github.com/DeadSith">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        7
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          11
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/DeadSith" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <td><a href="https://DeadSith.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+
+        <header class="article-header">
+    <a href="https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/">
+    <h1 class="article-title" itemprop="name">
+        Asp net core: mapping areas to subdomains
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-05-30 21:03:43 &#43;0300 EEST" itemprop="datePublished">2017-05-30</time>
+            &middot;
+            491
+            words
+            &middot;
+            3
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/categories/dotnet">dotnet</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/net-core">net core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/asp-net">asp net</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/asp-net-core">asp net core</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/subdomain">subdomain</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/area">area</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://DeadSith.github.io/tags/routing">routing</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>Inspired by question on <a href="https://stackoverflow.com/questions/42287716/asp-net-core-mapping-subdomains-to-areas">StackOverflow</a>. Some parts of code are copied from <a href="https://github.com/aspnet/Mvc/blob/d44c9aee1e0fe331158a7c9bb2c88b38d74c72e7/src/Microsoft.AspNetCore.Mvc.Core/Internal/MvcRouteHandler.cs">MvcRouteHandler</a>.
+</p>
+
+<h2 id="note">Note:</h2>
+
+<p>Your area names should not match any controller or method name. Otherwise, routing will not work correctly.</p>
+
+<h3 id="step-1-custom-router-class">Step 1: Custom router class</h3>
+
+<p>We have to create class, which will split url into parts and use the first part as area. Original MvcRouteHandler is used here as a base class. Also, some code from it is used in <code>RouteAsync</code> method. Calling base method somewhy don&rsquo;t work.</p>
+
+<pre><code class="language-csharp">using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Internal;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Sith.Main
+{
+    public class AreaRouter : MvcRouteHandler, IRouter
+    {
+        private string[] _allowedSubdomains = { &quot;Vpn&quot;, &quot;Password&quot; };
+        //These are actualy copies of same values from base class. Some of them are used later.
+        private IActionContextAccessor _actionContextAccessor;
+        private IActionInvokerFactory _actionInvokerFactory;
+        private IActionSelector _actionSelector;
+        private ILogger _logger;
+        private DiagnosticSource _diagnosticSource;
+
+
+        public AreaRouter(
+            IActionInvokerFactory actionInvokerFactory,
+            IActionSelector actionSelector,
+            DiagnosticSource diagnosticSource,
+            ILoggerFactory loggerFactory)
+            : this(actionInvokerFactory, actionSelector, diagnosticSource, loggerFactory, actionContextAccessor: null)
+        {
+        }
+
+        public AreaRouter(IActionInvokerFactory actionInvokerFactory, IActionSelector actionSelector, DiagnosticSource diagnosticSource,
+            ILoggerFactory loggerFactory, IActionContextAccessor actionContextAccessor)
+            : base(actionInvokerFactory, actionSelector, diagnosticSource,
+            loggerFactory, actionContextAccessor)
+        {
+            _actionContextAccessor = actionContextAccessor;
+            _actionInvokerFactory = actionInvokerFactory;
+            _actionSelector = actionSelector;
+            _diagnosticSource = diagnosticSource;
+            _logger = loggerFactory.CreateLogger&lt;MvcRouteHandler&gt;();
+        }
+
+        public new Task RouteAsync(RouteContext context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+            string url = context.HttpContext.Request.Headers[&quot;HOST&quot;];
+            string firstDomain = url.Split('.')[0];
+            //Areas usually start from uooer-case letter.
+            string subDomain = char.ToUpper(firstDomain[0]) + firstDomain.Substring(1);
+            //check if our app knows subdomain
+            if(_allowedSubdomains.Contains(subDomain))
+                context.RouteData.Values.Add(&quot;area&quot;, subDomain);
+                
+            //All the next code is copied from base class
+            var candidates = _actionSelector.SelectCandidates(context);
+            if (candidates == null || candidates.Count == 0)
+            {
+                return TaskCache.CompletedTask;
+            }
+
+            var actionDescriptor = _actionSelector.SelectBestCandidate(context, candidates);
+            if (actionDescriptor == null)
+            {
+                return TaskCache.CompletedTask;
+            }
+
+            context.Handler = (c) =&gt;
+            {
+                var routeData = c.GetRouteData();
+
+                var actionContext = new ActionContext(context.HttpContext, routeData, actionDescriptor);
+                if (_actionContextAccessor != null)
+                {
+                    _actionContextAccessor.ActionContext = actionContext;
+                }
+
+                var invoker = _actionInvokerFactory.CreateInvoker(actionContext);
+                if (invoker == null)
+                {
+                    throw new InvalidOperationException();
+                }
+
+                return invoker.InvokeAsync();
+            };
+
+            return TaskCache.CompletedTask;
+        }
+    
+    }
+}
+</code></pre>
+
+<h3 id="step-2-setting-up-startup-cs">Step 2: Setting up Startup.cs</h3>
+
+<p>Firstly, we need to create AreaRouter which will be later used:</p>
+
+<pre><code class="language-csharp">public void ConfigureServices(IServiceCollection services)
+        {
+            //some other stuff
+            services.AddSingleton&lt;AreaRouter&gt;();
+        }
+</code></pre>
+
+<p>Now we have working instance of area router and can configure the routes(note the change of the signature of the method):</p>
+
+<pre><code class="language-csharp">//pass area router using dependancy injection
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, AreaRouter areaRouter)
+    {
+        //some other stuff
+        app.UseMvc(routes =&gt;
+            {
+                routes.DefaultHandler = areaRouter;
+                routes.MapRoute(&quot;areaRoute&quot;, &quot;{area:exists}/{controller=Admin}/{action=Index}/{id?}&quot;);
+                routes.MapRoute(
+                    name: &quot;default&quot;,
+                    template: &quot;{controller=Home}/{action=Index}/{id?}&quot;);
+            });
+    }        
+</code></pre>
+
+<h3 id="step-3-only-iis">Step 3(only IIS):</h3>
+
+<p>Open <code>.vs\config\applicationHost.config</code> in project folder. Inside it find line similar to these:</p>
+
+<pre><code>&lt;bindings&gt;
+   &lt;binding protocol=&quot;http&quot; bindingInformation=&quot;*:5252:localhost&quot; /&gt;
+&lt;/bindings&gt;
+</code></pre>
+
+<p>Add your subdomains here. They should look like <code>&lt;binding protocol=&quot;http&quot; bindingInformation=&quot;*:5252:contoso.localhost&quot; /&gt;</code>. Start Visual Studio with admin rights and test your application. IIS will not start working with subdomains without admin rights.</p>
+
+<h3 id="finally">Finally:</h3>
+
+<p>This example can be improved in some ways and it has some drawbacks(read Note on the top), but it is working. Complete project is available <a href="https://github.com/DeadSith/Area-routing">here</a>.</p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/" data-id="ec97fcfcca7e659cef07a5ba0b3956ac" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://DeadSith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Інформаційні команди Git</div>
+    </a>
+    
+
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'deadsith';
+    var disqus_identifier = 'https:\/\/DeadSith.github.io\/2017\/05\/30\/asp-net-core-mapping-areas-to-subdomains\/';
+    var disqus_title = 'Asp net core: mapping areas to subdomains';
+    var disqus_url = 'https:\/\/DeadSith.github.io\/2017\/05\/30\/asp-net-core-mapping-areas-to-subdomains\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://DeadSith.github.io/categories/dotnet">
+                        dotnet
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/" class="title">Asp net core: mapping areas to subdomains</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-05-30 21:03:43 &#43;0300 EEST" itemprop="datePublished">2017-05-30</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://DeadSith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Asp net core: mapping areas to subdomains" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://DeadSith.github.io/categories/git">
+                        git
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://DeadSith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git/" class="title">Інформаційні команди Git</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-12 13:28:55 &#43;0200 EET" itemprop="datePublished">2017-01-12</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://DeadSith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Asp net core: mapping areas to subdomains" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://DeadSith.github.io/categories/git">
+                        git
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://DeadSith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git/" class="title">Злиття віток в Git</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-11 20:14:00 &#43;0200 EET" itemprop="datePublished">2017-01-11</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://DeadSith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Asp net core: mapping areas to subdomains" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://DeadSith.github.io/categories/git">
+                        git
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://DeadSith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github/" class="title">git clone та додаткові можливості GitHub</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-11 14:00:35 &#43;0200 EET" itemprop="datePublished">2017-01-11</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://DeadSith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/" class="thumbnail">
+                    
+                        <span style="background-image:url(http://i.imgur.com/oDiasJ3.png)" alt="Asp net core: mapping areas to subdomains" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://DeadSith.github.io/categories/git">
+                        git
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://DeadSith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/" class="title">Вітки в Git</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-01-10 18:17:40 &#43;0200 EET" itemprop="datePublished">2017-01-10</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+    
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://DeadSith.github.io/tags/area" style="font-size: 12px;">area</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/asp-net" style="font-size: 12px;">asp-net</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/asp-net-core" style="font-size: 12px;">asp-net-core</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/branching" style="font-size: 12px;">branching</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/git" style="font-size: 12px;">git</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/merge" style="font-size: 12px;">merge</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/net-core" style="font-size: 12px;">net-core</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/routing" style="font-size: 12px;">routing</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/starting" style="font-size: 12px;">starting</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/subdomain" style="font-size: 12px;">subdomain</a>
+        
+        
+        <a href="https://DeadSith.github.io/tags/%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%BE%D1%8E" style="font-size: 12px;">українською</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      Powered by <a href="//gohugo.io">Hugo</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-90098943-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+<script src="https://DeadSith.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://DeadSith.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>

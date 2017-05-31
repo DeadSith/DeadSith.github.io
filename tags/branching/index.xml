@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Branching on DSBlog</title>
-    <link>https://deadsith.github.io/tags/branching/index.xml</link>
-    <description>Recent content in Branching on DSBlog</description>
+    <title>Branching on Sith Blog</title>
+    <link>https://DeadSith.github.io/tags/branching/</link>
+    <description>Recent content in Branching on Sith Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](//gohugo.io).</copyright>
-    <atom:link href="https://deadsith.github.io/tags/branching/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 20:14:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://DeadSith.github.io/tags/branching/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Злиття віток в Git</title>
-      <link>https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git</link>
+      <link>https://DeadSith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git/</link>
       <pubDate>Wed, 11 Jan 2017 20:14:00 +0200</pubDate>
       
-      <guid>https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git</guid>
+      <guid>https://DeadSith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git/</guid>
       <description>&lt;hr /&gt;
 
 &lt;h2 id=&#34;автор-rizakrko-https-github-com-rizakrko&#34;&gt;Автор: &lt;a href=&#34;https://github.com/rizakrko&#34;&gt;rizakrko&lt;/a&gt;&lt;/h2&gt;
@@ -23,108 +26,15 @@
 
 &lt;p&gt;В кінці попередньої статті про &lt;a href=&#34;https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/&#34;&gt;вітки&lt;/a&gt; ми завершили на тому, що історя репозиторію розділилась.&lt;/p&gt;
 
-&lt;p&gt;Цього разу ми розпочнемо розглядати різні способи злиття віток.&lt;/p&gt;
-
-&lt;p&gt;
-Для початку створимо ще одну вітку, &lt;code&gt;merge_test&lt;/code&gt;. Зробимо тестовий комміт, створивши новий файл, і добавивши в нього текст.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout -b merge_test
-	$vim new_file.txt
-	$git add new_file.txt
-	$git commit -am&#39;test commit&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Ви могли зауважити, що відсутня команда &lt;code&gt;$git branch merge_test&lt;/code&gt;. Для того, щоб створити гілку, і відразу ж перекикнути вказiвник HEAD на неї, істує команда &lt;code&gt;$git checkout -b &amp;lt;назва нової вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;На даний момент репозиторій має наступний вигляд:
-&lt;img src=&#34;http://i.imgur.com/zlEAtIi.png&#34; alt=&#34;Після створення вітки merge_test&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Спробуємо злити вітки &lt;code&gt;merge_test&lt;/code&gt; і &lt;code&gt;master&lt;/code&gt;. Одна з команд, яка дозволяє це зробити - &lt;code&gt;$git merge &amp;lt;назва вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Важливо зауважити, що &lt;code&gt;$git merge &amp;lt;назва вітки&amp;gt;&lt;/code&gt; зливає вказану вітку до тої, на яку вказує вказівник HEAD.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
-	$git merge merge_test
-	 Обновление 2c723a0..fbb85b1
-	 Fast-forward
- 	 new_file.txt | 1 +
- 	 1 file changed, 1 insertion(+)
- 	 create mode 100644 new_file.txt
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;В даному випадку Git використав механізм так званої &amp;ldquo;перемотки&amp;rdquo;, на що вказує повідомлення &lt;code&gt;Fast-forward&lt;/code&gt;. Якщо вітка, в яку відбувається злиття є прямим батьком вітки, яку зливають, то Git просто переміщає вказівник вперед.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;В результаті злиття наш репозиторій має наступний вигляд:
-&lt;img src=&#34;http://i.imgur.com/Vp9RFTN.png&#34; alt=&#34;master i merge_test вказують на один комміт&#34; /&gt;
-Після цього можна видалити вітку &lt;code&gt;merge_test&lt;/code&gt;. Для цього використовується команда &lt;code&gt;git branch -d &amp;lt;назва вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch -d merge_test
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Якщо за певних причин ви хочете видалити вітку, не зливши зміни в основну вітку, то дана команда не дозволить вам цього зробити. Для цього потрібно явно підтвердити свої наміри, замінивши ключ &lt;code&gt;-d&lt;/code&gt; на &lt;code&gt;-D&lt;/code&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Перекинемо вказівник HEAD на вітку &lt;code&gt;testing&lt;/code&gt;, і створимо ще один комміт.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout testing
-	$vim first_file.txt
-	$git commit -am&#39;commit in testing branch&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Зауважимо, що зміни, що були зроблені в вітці &lt;code&gt;merge_test&lt;/code&gt; не включені в вітку &lt;code&gt;testing&lt;/code&gt;. Є два варіанти, як злити ці зміни.
-Або злити вітку &lt;code&gt;master&lt;/code&gt; в вітку &lt;code&gt;testing&lt;/code&gt;, або при завершенні роботи над віткою &lt;code&gt;testing&lt;/code&gt; злити її в &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Допустимо, що ми завершили роботу над віткою &lt;code&gt;testing&lt;/code&gt;. Злиємо її у вітку &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
-	$git merge testing
-	 Merge made by the &#39;recursive&#39; strategy.
-	 first_file.txt |    1 +
-	 1 file changed, 1 insertion(+)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Цього разу повідомлення відрізняється. Комміт, на який вказує вітка &lt;code&gt;testing&lt;/code&gt; не є прямим нащадком комміту, на який вказує вітка&lt;code&gt;master&lt;/code&gt;. В такому випадку Git шукає найкращого спільного предка, на основі якого буде відбуватись злиття. На відміну від інших СКВ, це відбувається автоматично, тому корисувачу немає необхідності про це піклуватись. Як результат цього злиття створюється новий комміт, який називається коммітом злиття. На даний момент наш репозиторій має наступний вигляд:
-&lt;img src=&#34;http://i.imgur.com/jkjISIC.png&#34; alt=&#34;Комміт злиття&#34; /&gt;
-Тепер можна видалити вітку &lt;code&gt;testing&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch -d testing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;конфлікти-при-злитті-віток&#34;&gt;Конфлікти при злитті віток&lt;/h1&gt;
-
-&lt;p&gt;На жаль, не все так чудаво при злитті віток. Навіть якщо ви все виконали вірно, залишаєть висока ймовірність конфліктів. Зазвичай вони мають наступний вигляд:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$ git merge new_cool_feature
-	Auto-merging meaning_of_life
-	CONFLICT (content): Merge conflict in meaning_of_life
-	Automatic merge failed; fix conflicts and then commit the result.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Про те, що це таке, а також як це вирішити буде в наступних постах.&lt;/p&gt;</description>
+&lt;p&gt;Цього разу ми розпочнемо розглядати різні способи злиття віток.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Вітки в Git</title>
-      <link>https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git</link>
+      <link>https://DeadSith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/</link>
       <pubDate>Tue, 10 Jan 2017 18:17:40 +0200</pubDate>
       
-      <guid>https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git</guid>
+      <guid>https://DeadSith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/</guid>
       <description>&lt;hr /&gt;
 
 &lt;h2 id=&#34;автор-rizakrko-https-github-com-rizakrko&#34;&gt;Автор: &lt;a href=&#34;https://github.com/rizakrko&#34;&gt;rizakrko&lt;/a&gt;&lt;/h2&gt;
@@ -134,125 +44,7 @@
 &lt;h2 id=&#34;коротко-про-зберігання-даних-git-ом&#34;&gt;Коротко про зберігання даних Git&amp;rsquo;ом&lt;/h2&gt;
 
 &lt;p&gt;Для чіткого розуміння механізму віток, необхідно зрозуміти, як Git
-зберігає дані.&lt;/p&gt;
-
-&lt;p&gt;Основна відмінність Git&amp;rsquo;a від будь-якої іншої СКВ - це підхід Git&amp;rsquo;a до роботи зі своїми даними. Більшість інших систем зберігають інформацію у вигляду списку змін у файлах. Ці системи представляють інформацію у вигляді набору файлів та змін, зроблених в кожному файлі, по часу.
-
-&lt;img src=&#34;http://i.imgur.com/ruRAiyn.png&#34; alt=&#34;Схематичне зображення роботи інших СКВ&#34; /&gt;
-В Git&amp;rsquo;і використовується принципрово інший підхід: кожного разу, коли ви робите комміт,тобто зберігаєте стан свого проекту в Git&amp;rsquo;i, система запам&amp;rsquo;ятовує, як виглядає кожен файл в даний момент, і зберігає посилання на цей знамок. Якщо файл не був змінений, то система створює посилання на попередню версію цього файлу.
-&lt;img src=&#34;http://i.imgur.com/MQjBYtD.png&#34; alt=&#34;Схематичне зображення роботи Git&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;коротко-про-вітки&#34;&gt;Коротко про вітки&lt;/h2&gt;
-
-&lt;p&gt;Git репозиторій представляє собою каталог, який зберігає дерево файлів. Протягом роботи ви змінюєте файли, після чого зберігаєте їх у вигляді одного комміта.
-Створимо тестовий репозиторій(для цього потрібно налаштувати Git на вашій системі, &lt;a href=&#34;https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git/&#34;&gt;детальніше&lt;/a&gt;).&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$cd ~ //перехід в домашню директорію
-	$mkdir git_branching //створюємо папку, для репозиторію
-	$cd git_branching //переходимо в папку
-	$git init //ініціалізуємо пустий репозиторій
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;На даний момент репозиторій пустий, тому додамо в нього 2 файли.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$touch first_file.txt
-	$touch second_file.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Зробимо зміни в обох файлах,використовуючи будь-який доступний редактор. В даному випадку &lt;a href=&#34;https://uk.wikipedia.org/wiki/Vim&#34;&gt;Vim&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/CCkuvPQ.png&#34; alt=&#34;Перший та другий файли&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Зафіксуємо зміни в комміт.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git add first_file.txt second_file.txt
-	$git commit -m &#39;initial commit&#39;
-	[master (корневой коммит) 02231c3] initial
-	 2 files changed, 2 insertions(+)
-	 create mode 100644 first_file.txt
-	 create mode 100644 second_file.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;На даний момент ваш Git репозиторій зберігає 4 об&amp;rsquo;єкти: блоб(blob) для вмісту кожного файлу, вміст каталогу у вигляді дерева зі вказівниками на блоби збережених файлів, сам комміт з вказівником на основне дерево, метадані комміту.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/KgrS3g7.png&#34; alt=&#34;Візуалізація комміту&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Якщо ви зробите зміни в робочій директорії та зафіксуєте їх в комміт, тоді наступний комміт збереже вказівник на комміт, який передував йому.
-&lt;img src=&#34;http://i.imgur.com/zbY2DNn.png&#34; alt=&#34;Комміт і його батько&#34; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;вітка-в-git-це-вказівник-на-один-з-коммітів-ім-я-основної-вітки-за-замовчуванням-master&#34;&gt;Вітка в Git - це вказівник на один з коммітів. Ім&amp;rsquo;я основної вітки за замовчуванням - master&lt;/h5&gt;
-
-&lt;p&gt;Коли ви робите комміти, то отримуєте основну вітку, яка вказує на ваш останній комміт. Кожен комміт зсуває це вказівник вперед.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Вітка master є звичайною віткою. Вона є практично у кожному репозиторії лишень тому, шо вона автоматично створюється командою &lt;code&gt;git init&lt;/code&gt;, а більшість корисувачів не змінює її назви.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;створення-нової-вітки&#34;&gt;Створення нової вітки&lt;/h2&gt;
-
-&lt;p&gt;Створюючи нову вітку, всього-навсього створюється новий вказівник для подальшої роботи. Якщо ви, наприклад, хочете створити нову вітку під назвою testing, тоді це можливо зробити за допомогою команди &lt;code&gt;git branch&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch testing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;В результаті створюється новий вказівник на поточний комміт.
-&lt;img src=&#34;http://i.imgur.com/yq31LNV.png&#34; alt=&#34;Дві вітки вказують на одну і ту саму послідовність коммітів&#34; /&gt;
-Для того, щоб Git міг визначити, яка вітка є поточною, існує спеціальний вказівник HEAD. Слід зауважити, що при створенні нової вітки перемикання вказівника HEAD не відбувається. В цьому можна переконатись, виконавши команду &lt;code&gt;git branch&lt;/code&gt; не вказавши інших аргументів.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch
-	 * master
-	   testing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ця команда виводить список всіх локальних віток, символ &amp;ldquo;*&amp;rdquo; вказує на поточну. Також можна використовувати команду &lt;code&gt;$ git log --oneline --decorate --all&lt;/code&gt;, яка виводить історію коммітів і куди саме вказують вітки.
-&lt;img src=&#34;http://i.imgur.com/uTpyclv.png&#34; alt=&#34;Результат виконання команди git log&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;перемикання-віток&#34;&gt;Перемикання віток&lt;/h2&gt;
-
-&lt;p&gt;Для того, щоб переключитись на існуючу вітку, виконайте команду &lt;code&gt;git checkout&lt;/code&gt;. Переключимось на вітку &lt;code&gt;testing&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout testing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/pbjDcDj.png&#34; alt=&#34;HEAD вказує на вітку testing&#34; /&gt;
-Цим самим ми перекинемо вказівник HEAD на вітку testing.
-Давайте створимо новий комміт.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$vim second_file.txt
-	$git commit -am&#39;test change&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/W1F5yvk.png&#34; alt=&#34;HEAD перемістився вперед, а master вказує той самий комміт&#34; /&gt;
-Переключимось назад на вітку master.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;При перемиканні вітки всі файли відновлюються до того стану, в якому були на момент створення коміту, на який вказує вітка. Іншими словами, вся робота, пророблена у вітці testing відкотилась до моменту її створення. Також, якщо через певні причини Git не може це зробити, то перемикання не відбудеться.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Зробимо ще одну зміну і зафіксуємо комміт.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$vim first_file.txt
-	$git commit -am&#39;some more changes&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Тепер історія вашого проекту розділилась на дві вітки. Вони ізольовані одна від одної. Ви можене переключатись між ними, використовуючи команди &lt;code&gt;branch&lt;/code&gt;, &lt;code&gt;checkout&lt;/code&gt;, &lt;code&gt;commit&lt;/code&gt;, і за потреби злити їх в одну(про це в майбутніх постах).
-&lt;img src=&#34;http://i.imgur.com/9Ynxnez.png&#34; alt=&#34;Актуальний стан репозиторію&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Це все можна побачити за допомогою команди &lt;code&gt;git log --oneline --decorate --graph --all&lt;/code&gt;.
-&lt;img src=&#34;http://i.imgur.com/oxOenhj.png&#34; alt=&#34;Результат виконання команди git log&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Те, чому є сенс використовувати вітки буде детальніше розглянуто в наступних постах.&lt;/p&gt;
-
-&lt;hr /&gt;</description>
+зберігає дані.&lt;/p&gt;</description>
     </item>
     
   </channel>

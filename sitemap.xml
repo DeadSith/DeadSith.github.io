@@ -1,90 +1,139 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://deadsith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git</loc>
+    <loc>https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://DeadSith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git/</loc>
     <lastmod>2017-01-12T13:28:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git</loc>
+    <loc>https://DeadSith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git/</loc>
     <lastmod>2017-01-11T20:14:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github</loc>
+    <loc>https://DeadSith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github/</loc>
     <lastmod>2017-01-11T14:00:35+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git</loc>
+    <loc>https://DeadSith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/</loc>
     <lastmod>2017-01-10T18:17:40+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git</loc>
+    <loc>https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git/</loc>
     <lastmod>2017-01-10T15:50:29+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git</loc>
+    <loc>https://DeadSith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git/</loc>
     <lastmod>2017-01-09T18:19:55+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/tags/branching/</loc>
+    <loc>https://DeadSith.github.io/tags/area/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DeadSith.github.io/tags/asp-net/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DeadSith.github.io/tags/asp-net-core/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DeadSith.github.io/tags/branching/</loc>
     <lastmod>2017-01-11T20:14:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/categories/</loc>
+    <loc>https://DeadSith.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/</loc>
+    <loc>https://DeadSith.github.io/categories/dotnet/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DeadSith.github.io/tags/git/</loc>
     <lastmod>2017-01-12T13:28:55+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/categories/git/</loc>
+    <loc>https://DeadSith.github.io/categories/git/</loc>
     <lastmod>2017-01-12T13:28:55+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/tags/git/</loc>
-    <lastmod>2017-01-12T13:28:55+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://deadsith.github.io/tags/merge/</loc>
+    <loc>https://DeadSith.github.io/tags/merge/</loc>
     <lastmod>2017-01-11T20:14:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/post/</loc>
+    <loc>https://DeadSith.github.io/tags/net-core/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DeadSith.github.io/post/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DeadSith.github.io/tags/routing/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DeadSith.github.io/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DeadSith.github.io/tags/starting/</loc>
     <lastmod>2017-01-12T13:28:55+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/tags/starting/</loc>
-    <lastmod>2017-01-12T13:28:55+02:00</lastmod>
+    <loc>https://DeadSith.github.io/tags/subdomain/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/tags/</loc>
+    <loc>https://DeadSith.github.io/tags/</loc>
+    <lastmod>2017-05-30T21:03:43+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://deadsith.github.io/tags/%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%BE%D1%8E/</loc>
+    <loc>https://DeadSith.github.io/tags/%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%BE%D1%8E/</loc>
     <lastmod>2017-01-12T13:28:55+02:00</lastmod>
     <priority>0</priority>
   </url>

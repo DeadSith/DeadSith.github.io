@@ -1,150 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on DSBlog</title>
-    <link>https://deadsith.github.io/post/index.xml</link>
-    <description>Recent content in Posts on DSBlog</description>
+    <title>Posts on Sith Blog</title>
+    <link>https://DeadSith.github.io/post/</link>
+    <description>Recent content in Posts on Sith Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](//gohugo.io).</copyright>
-    <lastBuildDate>Thu, 12 Jan 2017 13:28:55 +0200</lastBuildDate>
-    <atom:link href="https://deadsith.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 May 2017 21:03:43 +0300</lastBuildDate>
+    
+	<atom:link href="https://DeadSith.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Asp net core: mapping areas to subdomains</title>
+      <link>https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/</link>
+      <pubDate>Tue, 30 May 2017 21:03:43 +0300</pubDate>
+      
+      <guid>https://DeadSith.github.io/2017/05/30/asp-net-core-mapping-areas-to-subdomains/</guid>
+      <description>&lt;p&gt;Inspired by question on &lt;a href=&#34;https://stackoverflow.com/questions/42287716/asp-net-core-mapping-subdomains-to-areas&#34;&gt;StackOverflow&lt;/a&gt;. Some parts of code are copied from &lt;a href=&#34;https://github.com/aspnet/Mvc/blob/d44c9aee1e0fe331158a7c9bb2c88b38d74c72e7/src/Microsoft.AspNetCore.Mvc.Core/Internal/MvcRouteHandler.cs&#34;&gt;MvcRouteHandler&lt;/a&gt;.
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Інформаційні команди Git</title>
-      <link>https://deadsith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git</link>
+      <link>https://DeadSith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git/</link>
       <pubDate>Thu, 12 Jan 2017 13:28:55 +0200</pubDate>
       
-      <guid>https://deadsith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git</guid>
+      <guid>https://DeadSith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git/</guid>
       <description>&lt;h2 id=&#34;вступ&#34;&gt;Вступ&lt;/h2&gt;
 
 &lt;p&gt;Цього разу ми розберемо команди Git, які дозволяють отримати інформацію про коміти і зміни у них.
-&lt;/p&gt;
-
-&lt;p&gt;Git має низку різних інформаційних команд(status, log, diff, show). Є ще кілька команд, але вони призначені для роботи з різними гілками.
-Для цього уроку пропоную використати чужий репозиторій, який має велику кількість комітів. Ви можете самостійно знайти якийсь репозиторій, або клонувати &lt;a href=&#34;https://github.com/DeadSith/Identity&#34;&gt;цей&lt;/a&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&#34;попередня-частина-hahahugoshortcode-1hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github&#34;&gt;Попередня частина&lt;/a&gt;&lt;/h4&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;git-status&#34;&gt;git status&lt;/h2&gt;
-
-&lt;p&gt;Status відображає поточний стан репозиторію, а саме які файли були змінені, чи вони відстежуються тощо. Виконаємо команду на щойно клонованому репозиторію.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$  git status
-На гілці master
-Ваша гілка оновлена у відповідности з «origin/master».
-nothing to commit, working tree clean
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Тепер створимо новий файл і виконаємо команду знову.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ touch example.txt
-$ git status
-На гілці master
-Ваша гілка оновлена у відповідности з «origin/master».
-Несупроводжувані файли:
-  (використовуйте &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; щоб включити те, що повинно бути здійснено)
-
-	example.txt
-
-немає змін, доданих у комміт, але існують несупроводжувані файли (використовуйте &amp;quot;git add&amp;quot; щоб додати файли для супроводжування)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Почнемо відстежувати цей файл та повторимо команду.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git status
-На гілці master
-Ваша гілка оновлена у відповідности з «origin/master».
-Зміни для здійснення:
-  (використовуйте &amp;quot;git reset HEAD &amp;lt;file&amp;gt;...&amp;quot; щоб прибрати з буфера)
-
-	новий файл:    example.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;git-log&#34;&gt;git log&lt;/h2&gt;
-
-&lt;p&gt;Log виводить повну історію комітів поточної вітки. Ніяких параметрів передавати не потрібно, досить лише написати &lt;code&gt;git log&lt;/code&gt;. При цьому відкриється нове вікно консолі, у якому виведеться історія. Вікно можна закрити натиснувши &lt;code&gt;q&lt;/code&gt;(при цьому має бути увімкнена англійська розкладка клавіатури). Тут і надалі в цьому уроці я наводитму лише частини виводу.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git log
-commit d4fdb754c5d5d50ced3e5aa233b83a3f0749d1d1
-Author: DeadSith &amp;lt;deadsith@hotmail.com&amp;gt;
-Date:   Mon Dec 12 20:01:47 2016 +0000
-
-    Reverted profile viewing
-
-commit 0e45267bf0e6f562ef4dbe2ae344e858aee76468
-Author: DeadSith &amp;lt;deadsith@hotmail.com&amp;gt;
-Date:   Mon Dec 12 19:06:18 2016 +0000
-
-    Add support for colaborators
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;git-diff&#34;&gt;git diff&lt;/h2&gt;
-
-&lt;p&gt;Diff показує різницю між двома довільними комітами. Існує багато різних форм і параметрів для цієї команди. Я розповім лише про основні варіанти, про інші можна почитати в &lt;a href=&#34;https://git-scm.com/docs/git-diff&#34;&gt;офіційній документації&lt;/a&gt;.&lt;br /&gt;
-Додамо довільний текст у файл example.txt(у будь-якому текстовому редакторі) і виконаємо команду &lt;code&gt;git diff&lt;/code&gt;. Унаслідок цього відкриється нове вікно в консолі, у яке буде виведено різницю між поточним станом репозиторію і останнім комітом.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;diff --git a/example.txt b/example.txt
-index e69de29..15cdaf1 100644
---- a/example.txt
-+++ b/example.txt
-@@ -0,0 +1 @@
-+Lorem ipsum.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;У вікні показано, які саме файли змінено та зміни у них. Додані рядки починаються з &lt;code&gt;+&lt;/code&gt;, видален з &lt;code&gt;-&lt;/code&gt;. Щоб вимкнути це вікно, треба натиснути &lt;code&gt;q&lt;/code&gt;.
-Тепер видалимо файл example.txt і збережемо зміни в Git.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rm ./example.txt
-$ git add .
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Інша форма цієї команди дозволяє подивитись різницю між двома комітами. Для цього необхідно знати їх hash, який можна отримати з команди &lt;code&gt;git log&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# виводить зміни між 2 комітами з мого репозиторію. 
-$ git diff 868b63a7a7c58a2d088e22e70b0065c2425ebd29 63ce0c65005417566e0d6ced495ab8ea37ad09eb
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Якщо ввести лише один hash, то вказаний коміт буде порівнюватися з найновішим комітом поточної вітки.&lt;br /&gt;
-&lt;strong&gt;Зверніть увагу:&lt;/strong&gt; при зміні хешів місцями вивід теж зміниться.&lt;/p&gt;
-
-&lt;h2 id=&#34;git-show&#34;&gt;git show&lt;/h2&gt;
-
-&lt;p&gt;Show виводить інформацію про коміт та всі зміни у ньому. Іншими словами, він поєднує вивід &lt;code&gt;git log&lt;/code&gt; та &lt;code&gt;git diff&lt;/code&gt;.  Вивід цієї команди також відкривається у новомі вікні консолі, з якого можна вийти натиснувши &lt;code&gt;q&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git show 868b63a7a7c58a2d088e22e70b0065c2425ebd29
-commit 868b63a7a7c58a2d088e22e70b0065c2425ebd29
-Author: DeadSith &amp;lt;deadsith@hotmail.com&amp;gt;
-Date:   Wed Dec 7 16:59:12 2016 +0000
-
-    Started implementing changes viewing
-
-diff --git a/src/Identity/Controllers/HomeController.cs b/src/Identity/Controllers/HomeController.cs
-index da3c624..3d71206 100755
---- a/src/Identity/Controllers/HomeController.cs
-+++ b/src/Identity/Controllers/HomeController.cs
-@@ -119,7 +119,7 @@ namespace Identity.Controllers
-         {
-             var repo =
-                _context.Repos.Include(r =&amp;gt; r.Author)
--                   .First(
-+                   .FirstOrDefault(
-                        r =&amp;gt;
-                            String.Equals(r.RepoName.ToLower(), repoName.ToLower()) &amp;amp;&amp;amp;
-                            String.Equals(r.Author.UserName.ToLower(), userName.ToLower()));
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Злиття віток в Git</title>
-      <link>https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git</link>
+      <link>https://DeadSith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git/</link>
       <pubDate>Wed, 11 Jan 2017 20:14:00 +0200</pubDate>
       
-      <guid>https://deadsith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git</guid>
+      <guid>https://DeadSith.github.io/2017/01/11/%D0%B7%D0%BB%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D1%96%D1%82%D0%BE%D0%BA-%D0%B2-git/</guid>
       <description>&lt;hr /&gt;
 
 &lt;h2 id=&#34;автор-rizakrko-https-github-com-rizakrko&#34;&gt;Автор: &lt;a href=&#34;https://github.com/rizakrko&#34;&gt;rizakrko&lt;/a&gt;&lt;/h2&gt;
@@ -153,246 +48,28 @@ index da3c624..3d71206 100755
 
 &lt;p&gt;В кінці попередньої статті про &lt;a href=&#34;https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/&#34;&gt;вітки&lt;/a&gt; ми завершили на тому, що історя репозиторію розділилась.&lt;/p&gt;
 
-&lt;p&gt;Цього разу ми розпочнемо розглядати різні способи злиття віток.&lt;/p&gt;
-
-&lt;p&gt;
-Для початку створимо ще одну вітку, &lt;code&gt;merge_test&lt;/code&gt;. Зробимо тестовий комміт, створивши новий файл, і добавивши в нього текст.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout -b merge_test
-	$vim new_file.txt
-	$git add new_file.txt
-	$git commit -am&#39;test commit&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Ви могли зауважити, що відсутня команда &lt;code&gt;$git branch merge_test&lt;/code&gt;. Для того, щоб створити гілку, і відразу ж перекикнути вказiвник HEAD на неї, істує команда &lt;code&gt;$git checkout -b &amp;lt;назва нової вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;На даний момент репозиторій має наступний вигляд:
-&lt;img src=&#34;http://i.imgur.com/zlEAtIi.png&#34; alt=&#34;Після створення вітки merge_test&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Спробуємо злити вітки &lt;code&gt;merge_test&lt;/code&gt; і &lt;code&gt;master&lt;/code&gt;. Одна з команд, яка дозволяє це зробити - &lt;code&gt;$git merge &amp;lt;назва вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Важливо зауважити, що &lt;code&gt;$git merge &amp;lt;назва вітки&amp;gt;&lt;/code&gt; зливає вказану вітку до тої, на яку вказує вказівник HEAD.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
-	$git merge merge_test
-	 Обновление 2c723a0..fbb85b1
-	 Fast-forward
- 	 new_file.txt | 1 +
- 	 1 file changed, 1 insertion(+)
- 	 create mode 100644 new_file.txt
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;В даному випадку Git використав механізм так званої &amp;ldquo;перемотки&amp;rdquo;, на що вказує повідомлення &lt;code&gt;Fast-forward&lt;/code&gt;. Якщо вітка, в яку відбувається злиття є прямим батьком вітки, яку зливають, то Git просто переміщає вказівник вперед.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;В результаті злиття наш репозиторій має наступний вигляд:
-&lt;img src=&#34;http://i.imgur.com/Vp9RFTN.png&#34; alt=&#34;master i merge_test вказують на один комміт&#34; /&gt;
-Після цього можна видалити вітку &lt;code&gt;merge_test&lt;/code&gt;. Для цього використовується команда &lt;code&gt;git branch -d &amp;lt;назва вітки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch -d merge_test
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Якщо за певних причин ви хочете видалити вітку, не зливши зміни в основну вітку, то дана команда не дозволить вам цього зробити. Для цього потрібно явно підтвердити свої наміри, замінивши ключ &lt;code&gt;-d&lt;/code&gt; на &lt;code&gt;-D&lt;/code&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Перекинемо вказівник HEAD на вітку &lt;code&gt;testing&lt;/code&gt;, і створимо ще один комміт.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout testing
-	$vim first_file.txt
-	$git commit -am&#39;commit in testing branch&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Зауважимо, що зміни, що були зроблені в вітці &lt;code&gt;merge_test&lt;/code&gt; не включені в вітку &lt;code&gt;testing&lt;/code&gt;. Є два варіанти, як злити ці зміни.
-Або злити вітку &lt;code&gt;master&lt;/code&gt; в вітку &lt;code&gt;testing&lt;/code&gt;, або при завершенні роботи над віткою &lt;code&gt;testing&lt;/code&gt; злити її в &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Допустимо, що ми завершили роботу над віткою &lt;code&gt;testing&lt;/code&gt;. Злиємо її у вітку &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
-	$git merge testing
-	 Merge made by the &#39;recursive&#39; strategy.
-	 first_file.txt |    1 +
-	 1 file changed, 1 insertion(+)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Цього разу повідомлення відрізняється. Комміт, на який вказує вітка &lt;code&gt;testing&lt;/code&gt; не є прямим нащадком комміту, на який вказує вітка&lt;code&gt;master&lt;/code&gt;. В такому випадку Git шукає найкращого спільного предка, на основі якого буде відбуватись злиття. На відміну від інших СКВ, це відбувається автоматично, тому корисувачу немає необхідності про це піклуватись. Як результат цього злиття створюється новий комміт, який називається коммітом злиття. На даний момент наш репозиторій має наступний вигляд:
-&lt;img src=&#34;http://i.imgur.com/jkjISIC.png&#34; alt=&#34;Комміт злиття&#34; /&gt;
-Тепер можна видалити вітку &lt;code&gt;testing&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch -d testing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;конфлікти-при-злитті-віток&#34;&gt;Конфлікти при злитті віток&lt;/h1&gt;
-
-&lt;p&gt;На жаль, не все так чудаво при злитті віток. Навіть якщо ви все виконали вірно, залишаєть висока ймовірність конфліктів. Зазвичай вони мають наступний вигляд:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$ git merge new_cool_feature
-	Auto-merging meaning_of_life
-	CONFLICT (content): Merge conflict in meaning_of_life
-	Automatic merge failed; fix conflicts and then commit the result.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Про те, що це таке, а також як це вирішити буде в наступних постах.&lt;/p&gt;</description>
+&lt;p&gt;Цього разу ми розпочнемо розглядати різні способи злиття віток.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>git clone та додаткові можливості GitHub</title>
-      <link>https://deadsith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github</link>
+      <link>https://DeadSith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github/</link>
       <pubDate>Wed, 11 Jan 2017 14:00:35 +0200</pubDate>
       
-      <guid>https://deadsith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github</guid>
+      <guid>https://DeadSith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github/</guid>
       <description>&lt;h2 id=&#34;вступ&#34;&gt;Вступ&lt;/h2&gt;
 
 &lt;p&gt;У цьому уроці ми розберемо як правильно завантажити свій чи чужий репозиторій з Git.
 Також поглянемо на додаткові можливості GitHub при створенні нового репозиторію.
-&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&#34;наступна-частина-hahahugoshortcode-1hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/12/%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D1%96-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B8-git&#34;&gt;Наступна частина&lt;/a&gt;&lt;/h4&gt;
-
-&lt;h4 id=&#34;попередня-частина-hahahugoshortcode-2hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git&#34;&gt;Попередня частина&lt;/a&gt;&lt;/h4&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;git-clone&#34;&gt;git clone&lt;/h2&gt;
-
-&lt;p&gt;Команда &lt;a href=&#34;https://git-scm.com/docs/git-clone&#34;&gt;git clone &lt;/a&gt; використовується для завантаження віддаленого репозиторію на комп&amp;rsquo;ютер користувача. Найбільш поширена форма команди &lt;code&gt;git clone &amp;lt;посилання на репозиторій&amp;gt;&lt;/code&gt;.
-Ця команда також створює локальну master вітку, для якої вже задано у яку саме вітку віддаленого репозиторію вона має відвантажуватися. Іншими словами, після клонування репозиторію немає необхідностів виконувати&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git remote add origin https://github.com/DeadSith/GitTutorial.git
-$git push -u origin master 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Для відвантаження даних на сервер достатньо буде виконати лише &lt;a href=&#34;https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git#продовження-роботи-з-git&#34;&gt;команди з минулої частини&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;клонування-репозиторію-з-github&#34;&gt;Клонування репозиторію з GitHub&lt;/h2&gt;
-
-&lt;p&gt;GitHub дозволяє клонувати репозиторій по HTTPS або SSH. Користувачам Windows буде зручніше використати HTTPS, бо SSH потребує додаткових налаштувань. Користувачам інших операційних систем рекомендую налаштувати SSH, оскільки це дозволить зекономити час при подальшій роботі. Щоб клонувати репозиторій з GitHub необхідно перейти на його сторінку і натиснути на &lt;code&gt;Clone or download&lt;/code&gt;.
-&lt;img src=&#34;http://i.imgur.com/UB7cMpC.jpg&#34; alt=&#34;Клонування репозиторію&#34; /&gt;
-У правому куті цього меню можна вибрати спосіб завантаження(SSH чи HTTPS) і скопіювати посилання.
-Після цього необхідно відкрити будь-яку папку, яка не є Git-репозиторієм і клонувати репозиторій.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git clone &amp;lt;посилання&amp;gt;
-Клонування в &#39;GitTutorial&#39;...
-remote: Counting objects: 3, done.
-remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
-Отримання об’єктів: 100% (3/3), виконано.
-Перевірка з’єднання… виконано.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Щоб переконатися, що репозиторій успішно клоновано і ми можемо відвантажити його назад на GitHub, створимо ще один файл і додамо в обидва файли текст. Наступний код покаже приклад створення файлу з консолі. Для правильного виконання коду, Git Bash має бути відкритий у папці, в якій ми клонували код. Внаслідок клонування у поточній папці створена нова папка з ім&amp;rsquo;ям репозиторію. Виконаємо наступний код:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd ./GitTutorial #переходимо в папку репозиторію
-# Якщо у вас папка має іншу назву, то 
-# змініть GitTutorial на відповідну назву
-$ echo &amp;quot;Example text 1&amp;quot; &amp;gt;&amp;gt; 1.cs # записуємо текст в файл 1.cs
-$ echo &amp;quot;Example text 2&amp;quot; &amp;gt;&amp;gt; 2.rb # створюємо файл 2.rb і записуємо в нього текст
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Після цього почнемо відстежувати нові файли, створимо коміт і відвантижимо його. Спробуйте зробити це самостійно, не копіюючи настпний код, він наведений, щоб можна було порівняти результати виконання.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git add .
-$ git commit -m&amp;quot;Second commit&amp;quot;
-[master ee6604d] Second commit
-2 files changed, 2 insertions(+)
-create mode 100644 2.rb
-$ git push
-Підрахунок об’єктів: 4, виконано.
-Delta compression using up to 4 threads.
-Стиснення об’єктів: 100% (2/2), виконано.
-Запис об’єктів: 100% (4/4), 305 bytes | 0 bytes/s, виконано.
-Total 4 (delta 0), reused 0 (delta 0)
-To github.com:DeadSith/GitTutorial.git
-   f3a0000..ee6604d  master -&amp;gt; master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;самостійне-завдання&#34;&gt;Самостійне завдання&lt;/h2&gt;
-
-&lt;p&gt;Спробуйте клонувати &lt;a href=&#34;https://github.com/DeadSith/GitTutorial&#34;&gt;мій&lt;/a&gt; репозиторій. Створіть власний порожній репозиторій. Потім видаліть origin з клонованого репозиторію і замініть його на свій. Відвантажте репозиторій на GitHub. Видалити origin і додати свій можна згідно з інструкцією з &lt;a href=&#34;https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git#git-remote&#34;&gt;минулої частини&lt;/a&gt;.&lt;br /&gt;
-Якщо виникли певні проблеми чи питання при виконанні завдання - задавайте їх в коментарях.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;На цьому частина уроку присвячена безпосередньо Git закінчується. У наступній частині я розповім про всі можливості GitHub при створенні репозиторіїв.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;створення-репозиторіїв-на-github&#34;&gt;Створення репозиторіїв на Github&lt;/h2&gt;
-
-&lt;p&gt;Надалі я буду описувати сторінку створення репозиторіїв.
-&lt;img src=&#34;http://i.imgur.com/PRwLoFQ.jpg&#34; alt=&#34;Сторінка створення репозиторію&#34; /&gt;
-Поле Repository Name є єдиним обов&amp;rsquo;язковим полем, ту користувач має задати назву. GitHub пропонує випадкову назву при створенні репозиторіїв, проте бажано називати їх не випадковим чином. Назва має передавати вміст репозиторію.&lt;br /&gt;
-У полі Description можна написати короткий опис проекту(кілька слів). Для записування більшої кількості інформації про репозиторій(наприклад, завдання лабораторної роботи) слід використовувати файл &lt;a href=&#34;#readme-файл&#34;&gt;README&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;public-i-private-репозиторії&#34;&gt;Public i private репозиторії&lt;/h3&gt;
-
-&lt;p&gt;GitHub дозволяє створити 2 типи репозиторіїв: публічні(будь-хто з користувачів може переглядати і клонувати ваш репозиторій) та приватні(доступ до репозиторію маєте лише ви та люди, яким ви дали дозвіл). Для вас, як для власнику репозиторію, жодної різниці немає, оскільки ви завжди маєте повний доступ до репозиторію.&lt;/p&gt;
-
-&lt;h5 id=&#34;публічні-репозиторії&#34;&gt;Публічні репозиторії&lt;/h5&gt;
-
-&lt;p&gt;Будь-хто з користувачів має право переглянути ваш код, завантажити його, створити форк. Додавати нові коміти у репозиторій може лиш власник та авторизовані ним користувачі.
-При цьому будь-хто може створювати pull request(запит на одноразове додання власного коду в ваш репозиторій) та issue(проблема, спосіб користавача повідомити вас про певну проблему з програмою)&lt;/p&gt;
-
-&lt;h5 id=&#34;приватні-репозиторії&#34;&gt;Приватні репозиторії&lt;/h5&gt;
-
-&lt;p&gt;Вони недоступні на безкоштовних профілях. Вартість від 7$ в місяць, але доступно безкоштовно через &lt;a href=&#34;https://education.github.com/pack&#34;&gt;Student Developer Pack&lt;/a&gt;. Pull request та issues не доступні іншим корстувачам. Код також прихований.&lt;/p&gt;
-
-&lt;h4 id=&#34;авторизація-користувачів&#34;&gt;Авторизація користувачів&lt;/h4&gt;
-
-&lt;p&gt;Щоб надати іншим постійну можливість завантажувати код у ваші репозиторії необхідно зробити наступні дії:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Відкрити сторінку репозиторію.&lt;/li&gt;
-&lt;li&gt;Перейти на вкладку Settings.&lt;/li&gt;
-&lt;li&gt;У лівому меню вибрати пункт Collaborators і ввести пароль.&lt;/li&gt;
-&lt;li&gt;У нижньомі полі знайти необхідного користувача та натиснути Add collaborator.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;readme-файл&#34;&gt;README-файл&lt;/h3&gt;
-
-&lt;p&gt;GitHub надає можливість відобразити файл, у якому ви описуєте вміст репозиторію. Цей файл називається README.md і повинен бути розміщений в кореневому каталозі репозиторію. Файл пишеться на мові розмітки &lt;a href=&#34;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&#34;&gt;Markdown&lt;/a&gt;.&lt;br /&gt;
-Якщо при створенні репозиторію ви поставити галочку біля &amp;ldquo;Initialize this repository with a README&amp;rdquo;, то GitHub автоматично створить цей файл за вас. Вмістом буде лише заголовок з назвою проекту.&lt;/p&gt;
-
-&lt;h3 id=&#34;gitignore&#34;&gt;.gitignore&lt;/h3&gt;
-
-&lt;p&gt;Цей файл дозволяє виключити певні файли та папки з репозиторію. Він досить простий у роботі; достатньо лише ввести назву &amp;lt;файлу&amp;gt; або &amp;lt;папки/&amp;gt; і вона буде виключена. Детальніше &lt;a href=&#34;https://git-scm.com/docs/gitignore&#34;&gt;тут&lt;/a&gt;.&lt;br /&gt;
-GitHub має велику кількість шаблонів цього файлу для різних мов і середовищ, що дозволяє автоматично ігнорувати непотрібні файли.&lt;br /&gt;
-Якщо ви вирішили самостійно написати .gitignore, необхідно бути впевненим, що файл, який ви виключаєте, є дійсно непотрібним.&lt;br /&gt;
-Також варто виключати файли, які містять якусь приватну інформацію(логіни і паролі від сервісів, баз даних, тощо).&lt;/p&gt;
-
-&lt;h3 id=&#34;ліцензія&#34;&gt;Ліцензія&lt;/h3&gt;
-
-&lt;p&gt;GitHub підтримує ліцензування репозиторіїв. Якщо ви помістите в корінь репозиторію файл LICENSE, GitHub розпізнає його і буде виводити ліцензію на сторінці проекту.&lt;br /&gt;
-Ліцензія не є обов&amp;rsquo;язковим елементом проекту; її вибір можу бути досить складним. Перед вибором ліцензії необхідно ознайомитись з ліцензіями усіх елементів проекту і на основі цих даних вибрати ті, які можна використати у поєднанні з ліцензіями компонентів. Потім з отриманого списку вибрати найкращу для вас ліцензію.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;Якщо ви створили непустий репозиторій, то ви повинні його клонувати, а вже після цього додати нові файли. Спроба завантажити уже існуючий репозиторій викличе помилку.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;</description>
+&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Вітки в Git</title>
-      <link>https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git</link>
+      <link>https://DeadSith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/</link>
       <pubDate>Tue, 10 Jan 2017 18:17:40 +0200</pubDate>
       
-      <guid>https://deadsith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git</guid>
+      <guid>https://DeadSith.github.io/2017/01/10/%D0%B2%D1%96%D1%82%D0%BA%D0%B8-%D0%B2-git/</guid>
       <description>&lt;hr /&gt;
 
 &lt;h2 id=&#34;автор-rizakrko-https-github-com-rizakrko&#34;&gt;Автор: &lt;a href=&#34;https://github.com/rizakrko&#34;&gt;rizakrko&lt;/a&gt;&lt;/h2&gt;
@@ -402,306 +79,33 @@ GitHub має велику кількість шаблонів цього фай
 &lt;h2 id=&#34;коротко-про-зберігання-даних-git-ом&#34;&gt;Коротко про зберігання даних Git&amp;rsquo;ом&lt;/h2&gt;
 
 &lt;p&gt;Для чіткого розуміння механізму віток, необхідно зрозуміти, як Git
-зберігає дані.&lt;/p&gt;
-
-&lt;p&gt;Основна відмінність Git&amp;rsquo;a від будь-якої іншої СКВ - це підхід Git&amp;rsquo;a до роботи зі своїми даними. Більшість інших систем зберігають інформацію у вигляду списку змін у файлах. Ці системи представляють інформацію у вигляді набору файлів та змін, зроблених в кожному файлі, по часу.
-
-&lt;img src=&#34;http://i.imgur.com/ruRAiyn.png&#34; alt=&#34;Схематичне зображення роботи інших СКВ&#34; /&gt;
-В Git&amp;rsquo;і використовується принципрово інший підхід: кожного разу, коли ви робите комміт,тобто зберігаєте стан свого проекту в Git&amp;rsquo;i, система запам&amp;rsquo;ятовує, як виглядає кожен файл в даний момент, і зберігає посилання на цей знамок. Якщо файл не був змінений, то система створює посилання на попередню версію цього файлу.
-&lt;img src=&#34;http://i.imgur.com/MQjBYtD.png&#34; alt=&#34;Схематичне зображення роботи Git&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;коротко-про-вітки&#34;&gt;Коротко про вітки&lt;/h2&gt;
-
-&lt;p&gt;Git репозиторій представляє собою каталог, який зберігає дерево файлів. Протягом роботи ви змінюєте файли, після чого зберігаєте їх у вигляді одного комміта.
-Створимо тестовий репозиторій(для цього потрібно налаштувати Git на вашій системі, &lt;a href=&#34;https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git/&#34;&gt;детальніше&lt;/a&gt;).&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$cd ~ //перехід в домашню директорію
-	$mkdir git_branching //створюємо папку, для репозиторію
-	$cd git_branching //переходимо в папку
-	$git init //ініціалізуємо пустий репозиторій
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;На даний момент репозиторій пустий, тому додамо в нього 2 файли.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$touch first_file.txt
-	$touch second_file.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Зробимо зміни в обох файлах,використовуючи будь-який доступний редактор. В даному випадку &lt;a href=&#34;https://uk.wikipedia.org/wiki/Vim&#34;&gt;Vim&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/CCkuvPQ.png&#34; alt=&#34;Перший та другий файли&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Зафіксуємо зміни в комміт.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git add first_file.txt second_file.txt
-	$git commit -m &#39;initial commit&#39;
-	[master (корневой коммит) 02231c3] initial
-	 2 files changed, 2 insertions(+)
-	 create mode 100644 first_file.txt
-	 create mode 100644 second_file.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;На даний момент ваш Git репозиторій зберігає 4 об&amp;rsquo;єкти: блоб(blob) для вмісту кожного файлу, вміст каталогу у вигляді дерева зі вказівниками на блоби збережених файлів, сам комміт з вказівником на основне дерево, метадані комміту.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/KgrS3g7.png&#34; alt=&#34;Візуалізація комміту&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Якщо ви зробите зміни в робочій директорії та зафіксуєте їх в комміт, тоді наступний комміт збереже вказівник на комміт, який передував йому.
-&lt;img src=&#34;http://i.imgur.com/zbY2DNn.png&#34; alt=&#34;Комміт і його батько&#34; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;вітка-в-git-це-вказівник-на-один-з-коммітів-ім-я-основної-вітки-за-замовчуванням-master&#34;&gt;Вітка в Git - це вказівник на один з коммітів. Ім&amp;rsquo;я основної вітки за замовчуванням - master&lt;/h5&gt;
-
-&lt;p&gt;Коли ви робите комміти, то отримуєте основну вітку, яка вказує на ваш останній комміт. Кожен комміт зсуває це вказівник вперед.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Вітка master є звичайною віткою. Вона є практично у кожному репозиторії лишень тому, шо вона автоматично створюється командою &lt;code&gt;git init&lt;/code&gt;, а більшість корисувачів не змінює її назви.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;створення-нової-вітки&#34;&gt;Створення нової вітки&lt;/h2&gt;
-
-&lt;p&gt;Створюючи нову вітку, всього-навсього створюється новий вказівник для подальшої роботи. Якщо ви, наприклад, хочете створити нову вітку під назвою testing, тоді це можливо зробити за допомогою команди &lt;code&gt;git branch&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch testing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;В результаті створюється новий вказівник на поточний комміт.
-&lt;img src=&#34;http://i.imgur.com/yq31LNV.png&#34; alt=&#34;Дві вітки вказують на одну і ту саму послідовність коммітів&#34; /&gt;
-Для того, щоб Git міг визначити, яка вітка є поточною, існує спеціальний вказівник HEAD. Слід зауважити, що при створенні нової вітки перемикання вказівника HEAD не відбувається. В цьому можна переконатись, виконавши команду &lt;code&gt;git branch&lt;/code&gt; не вказавши інших аргументів.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git branch
-	 * master
-	   testing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ця команда виводить список всіх локальних віток, символ &amp;ldquo;*&amp;rdquo; вказує на поточну. Також можна використовувати команду &lt;code&gt;$ git log --oneline --decorate --all&lt;/code&gt;, яка виводить історію коммітів і куди саме вказують вітки.
-&lt;img src=&#34;http://i.imgur.com/uTpyclv.png&#34; alt=&#34;Результат виконання команди git log&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;перемикання-віток&#34;&gt;Перемикання віток&lt;/h2&gt;
-
-&lt;p&gt;Для того, щоб переключитись на існуючу вітку, виконайте команду &lt;code&gt;git checkout&lt;/code&gt;. Переключимось на вітку &lt;code&gt;testing&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout testing
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/pbjDcDj.png&#34; alt=&#34;HEAD вказує на вітку testing&#34; /&gt;
-Цим самим ми перекинемо вказівник HEAD на вітку testing.
-Давайте створимо новий комміт.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$vim second_file.txt
-	$git commit -am&#39;test change&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/W1F5yvk.png&#34; alt=&#34;HEAD перемістився вперед, а master вказує той самий комміт&#34; /&gt;
-Переключимось назад на вітку master.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$git checkout master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;При перемиканні вітки всі файли відновлюються до того стану, в якому були на момент створення коміту, на який вказує вітка. Іншими словами, вся робота, пророблена у вітці testing відкотилась до моменту її створення. Також, якщо через певні причини Git не може це зробити, то перемикання не відбудеться.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Зробимо ще одну зміну і зафіксуємо комміт.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;	$vim first_file.txt
-	$git commit -am&#39;some more changes&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Тепер історія вашого проекту розділилась на дві вітки. Вони ізольовані одна від одної. Ви можене переключатись між ними, використовуючи команди &lt;code&gt;branch&lt;/code&gt;, &lt;code&gt;checkout&lt;/code&gt;, &lt;code&gt;commit&lt;/code&gt;, і за потреби злити їх в одну(про це в майбутніх постах).
-&lt;img src=&#34;http://i.imgur.com/9Ynxnez.png&#34; alt=&#34;Актуальний стан репозиторію&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Це все можна побачити за допомогою команди &lt;code&gt;git log --oneline --decorate --graph --all&lt;/code&gt;.
-&lt;img src=&#34;http://i.imgur.com/oxOenhj.png&#34; alt=&#34;Результат виконання команди git log&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Те, чому є сенс використовувати вітки буде детальніше розглянуто в наступних постах.&lt;/p&gt;
-
-&lt;hr /&gt;</description>
+зберігає дані.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Основи роботи з Git</title>
-      <link>https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git</link>
+      <link>https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git/</link>
       <pubDate>Tue, 10 Jan 2017 15:50:29 +0000</pubDate>
       
-      <guid>https://deadsith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git</guid>
+      <guid>https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git/</guid>
       <description>&lt;h2 id=&#34;вступ&#34;&gt;Вступ&lt;/h2&gt;
 
 &lt;p&gt;У цьому уроці ми мозглянемо основи роботи з Git, а саме команди init, add та commit. Також я опишу процес створення репозиторію на GitHub та збереження інформації в цьому сервісі за допомогою команд push та pull.
 
-Під час минулогу уроку ви мали створити тестовий проект, роботу з яким ми продовжимо цього разу.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&#34;наступна-частина-hahahugoshortcode-1hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/11/git-clone-%D1%82%D0%B0-%D0%B4%D0%BE%D0%B4%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D1%96-%D0%BC%D0%BE%D0%B6%D0%BB%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D1%96-github&#34;&gt;Наступна частина&lt;/a&gt;&lt;/h4&gt;
-
-&lt;h4 id=&#34;попередня-частина-hahahugoshortcode-2hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git&#34;&gt;Попередня частина&lt;/a&gt;&lt;/h4&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;помилки-при-виконанні&#34;&gt;Помилки при виконанні&lt;/h3&gt;
-
-&lt;p&gt;Якщо при виконанні команд з цього керівництва виводяться поммилки, або вивід відрізняється від наведеного у прикадах, то варто заново виконати останні команди з &lt;a href=&#34;https://DeadSith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git&#34;&gt;попередньої частини&lt;/a&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;створення-репозиторію&#34;&gt;Створення репозиторію&lt;/h2&gt;
-
-&lt;p&gt;Відкриємо папку, створену в минулому уроці та відкриємо в ній Git Bash.
-Для створення репозиторію використовується команда init:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git init 
-Initialized empty Git repository in D:/GitTutorial/.git/ 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Внаслідок виконання цієї команди у поточній папці створюється прихована папка &lt;code&gt;.git&lt;/code&gt;. У ній зберігаєтьсю файли системи Git, самостійно вносити зміни у цю папку не варто.&lt;/p&gt;
-
-&lt;h2 id=&#34;відстеження-файлів-та-коміти&#34;&gt;Відстеження файлів та коміти&lt;/h2&gt;
-
-&lt;p&gt;Додамо в папку GitTutorial тестовий файл. Це можна зробити з Провідника, використавши контекстне меню, або з Git Bash:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ touch 1.cs #створює порожній файл з ім`ям 1.cs
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Тепер необхідно вказати Git, що він має відстежувати даний файл. Для цього використовується команда &lt;code&gt;git add&lt;/code&gt;. Її аргументами є список файлів, які необхідно додати до поточного репозиторію. Теоретично можна додати не всі файли, але краще для цього використовувати файл &lt;a href=&#34;https://git-scm.com/docs/gitignore&#34;&gt;.gitignore&lt;/a&gt;. Я детальніше розповім про цей файл в наступній частині керівництва. Тому тут, і надалі, будемо відстежувати всі файли. Щоб самостійно не перераховувати всі файли можна використати &lt;code&gt;.&lt;/code&gt; в якості параметру.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git add . #додаємо всі файли в поточній папці 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ця команда починає відстеження всіх файлів у поточній папці і її підпапках. Тобто, якщо ми знаходимося не в корені проекту, а в якійсь із папок, то варто повернутися в корінь проекту (у випадку цього керівництва коренем є папка GitTutorial).&lt;br /&gt;
-Виконавши ці команди, ми почали відстежувати зміни у файлах. Тепер необхідно зберегти ці зміни у системі Git. Для цього використовується команда &lt;code&gt;git commit&lt;/code&gt;, вона має безліч &lt;a href=&#34;https://git-scm.com/docs/git-commit&#34;&gt;параметрів&lt;/a&gt;, проте нас цікавить лише параметр &lt;code&gt;-m&lt;/code&gt;, без якого створити коміт не вийде. &lt;code&gt;-m&lt;/code&gt; використовується для задання повідомлення коміту. Створимо перший коміт з повідомленням &lt;code&gt;First commit&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git commit -m&amp;quot;First commit&amp;quot; #створюємо новий коміт 
-[master (root-commit) f3a0000] First commit 
-1 file changed, 0 insertions(+), 0 deletions(-) 
-create mode 100644 1.cs
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Для наступного кроку потрібний акаунт на GitHub, також необхідно провести початкове налаштування відповідно до попередньої частини керівництва.&lt;/p&gt;
-
-&lt;h2 id=&#34;створення-репозиторію-на-github&#34;&gt;Створення репозиторію на GitHub&lt;/h2&gt;
-
-&lt;p&gt;Для створення репозиторію треба зайти в свій аккаунт на GitHub. Після цього натиснемо на + у верхньому правому куті. &lt;img src=&#34;http://i.imgur.com/rubXZKX.png&#34; alt=&#34;Кнопка &amp;quot;створити&amp;quot;&#34; /&gt;
-Після цього відкриється сторінка створення нового репозиторію. Поки що встановіть налаштування так само, як на наступному скріншоті: &lt;img src=&#34;http://i.imgur.com/Z8EJDwG.png&#34; alt=&#34;Сторінка створення&#34; /&gt; Можна вибрати будь-яке ім`я, але варто зробити його зрозумілим. Після задання всіх параметрів, натисніть на кнопку &amp;ldquo;Create Repository&amp;rdquo;.&lt;br /&gt;
-Ми створили порожній репозиторій і перед нами відкривається з інструкціями по створенню новогу репозиторію. &lt;img src=&#34;http://i.imgur.com/jXrlzbH.png&#34; alt=&#34;Інструкція&#34; /&gt;
-Переконайтесь, що у верхній частині сторінки вибрано Https, а не SSH. Нас цікавить розділ &amp;ldquo;&amp;hellip;or push an existing repository&amp;rdquo;. Достатньо скопіювати команди з GitHub і виконати їх у Git Bash.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git remote add origin https://github.com/DeadSith/GitTutorial.git
-$git push -u origin master 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Після цього з`явиться наступне вікно, у якому необхідно ввести дані свого акаунту GitHub.
-&lt;img src=&#34;http://i.imgur.com/VAxz277.png&#34; alt=&#34;Вхід в GitHub&#34; /&gt;
-Якщо все введено правильно, то отримаємо наступний вивід:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Counting objects: 3, done. 
-Writing objects: 100% (3/3), 207 bytes | 0 bytes/s, done. 
-Total 3 (delta 0), reused 0 (delta 0) 
-To https://github.com/DeadSith/GitTutorial.git 
-* [new branch] master -&amp;gt; master 
-Branch master set up to track remote branch master from origin.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;ми-успішно-завантажили-наш-репозиторій-на-github&#34;&gt;Ми успішно завантажили наш репозиторій на GitHub&lt;/h4&gt;
-
-&lt;h2 id=&#34;команди-remote-push-та-pull&#34;&gt;Команди remote, push та pull&lt;/h2&gt;
-
-&lt;h3 id=&#34;git-remote&#34;&gt;git remote&lt;/h3&gt;
-
-&lt;p&gt;Ця команда дозволяє дозволяє перерахувати, додати та вилучити віддалені репозиторії, з якими локальний репозиторій буде синхронізовуватися.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git remote add origin &amp;lt;посилання на репозиторій&amp;gt; #додає репозиторій з ім`ям origin
-$ git remote rm origin #видаляє віддалений репозиторій з ім`ям origin
-$ git remote #перечислює всі віддалені репозиторії
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;git-push&#34;&gt;git push&lt;/h3&gt;
-
-&lt;p&gt;Push дозволяє відправити локальні коміти в віддалений репозиторій. Повна версія цієї команди має вигляд &lt;code&gt;git push &amp;lt;ім&#39;я віддаленого репозиторію&amp;gt; &amp;lt;ім&#39;я гілки&amp;gt;&lt;/code&gt;. Поки що ми будемо працювати лише з гілкою master. Команда, яку рекомендує GitHub (&lt;code&gt;git push -u origin master&lt;/code&gt;) вказує, що дана локальна гілка повинна завжди завантажуватися в &lt;code&gt;origin master&lt;/code&gt;. Це дозволить в майбутньому писати лише &lt;code&gt;git push&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;git-pull&#34;&gt;git pull&lt;/h3&gt;
-
-&lt;p&gt;Дана команда завантажує в локальну гілку зміни з віддаленої гілки, при цьому віддалена гілка має бути заданою. Якщо віддалена вітка попередньо не задана командою &lt;code&gt;git push&lt;/code&gt;, то її можна задати використовуючи &lt;code&gt;git branch -u &amp;lt;ім&#39;я віддаленого репозиторію&amp;gt; &amp;lt;ім&#39;я гілки&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;продовження-роботи-з-git&#34;&gt;Продовження роботи з git&lt;/h2&gt;
-
-&lt;p&gt;Після створення репозиторію і першого завантаження робота дещо спрощується. Достатньо ввести наступні команди:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git add .
-$ git commit -m&amp;quot;&amp;lt;повідомлення&amp;gt;&amp;quot;
-$ git push
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Якщо роботу над проектом ведуть кілька людей на одній гілці, то варто спочатку виконати &lt;code&gt;git pull&lt;/code&gt;, а потім почати редагування. Хоча у більшості випадків це не допоможе уникнути конфліктів.&lt;/p&gt;</description>
+Під час минулогу уроку ви мали створити тестовий проект, роботу з яким ми продовжимо цього разу.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Встановлення та початкове налаштування Git</title>
-      <link>https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git</link>
+      <link>https://DeadSith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git/</link>
       <pubDate>Mon, 09 Jan 2017 18:19:55 +0000</pubDate>
       
-      <guid>https://deadsith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git</guid>
+      <guid>https://DeadSith.github.io/2017/01/09/%D0%B2%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D0%BE%D0%B2%D0%B5-%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-git/</guid>
       <description>&lt;h2 id=&#34;вступ&#34;&gt;Вступ&lt;/h2&gt;
 
 &lt;p&gt;Git — розподілена система керування версіями файлів та спільної роботи. Основними перевагами цієї системи є простота в користуванні та широкий функціонал.&lt;br /&gt;
 Це керівництво познайомить вас з основами роботи з Git та сервісом &lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;. Ця частина описує встановлення та використання Git з Windows. Користувач Linux можуть пропустити цей крок, оскільки в більшості дистрибутитів Git встановлено за промовчанням.
-&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&#34;наступна-частина-hahahugoshortcode-1hbhb&#34;&gt;&lt;a href=&#34;https://DeadSith.github.io/2017/01/10/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B8-%D0%B7-git&#34;&gt;Наступна частина&lt;/a&gt;&lt;/h4&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;встановлення&#34;&gt;Встановлення&lt;/h2&gt;
-
-&lt;p&gt;Завантажити Git для Windows можна за наступним посиланням: &lt;a href=&#34;https://git-scm.com/download/win&#34;&gt;https://git-scm.com/download/win&lt;/a&gt;. Завантаження має початися автоматично; якщо цього не відбулося необхідно вибрати один з варіантів Git for Windows Setup. Після завантаження запускаємо установочний файл і натискаємо Next &amp;gt; поки не з&amp;rsquo;явиться &lt;img src=&#34;http://i.imgur.com/2scpzzn.png&#34; alt=&#34;Крок 1&#34; /&gt; У цьому і всіх наступних меню необхідно вибирати сам такі елементи, як на скріншотах.&lt;br /&gt;
-&lt;img src=&#34;http://i.imgur.com/RcBVGlA.png&#34; alt=&#34;Крок 2&#34; /&gt;
-&lt;img src=&#34;http://i.imgur.com/5TEC618.png&#34; alt=&#34;Крок 3&#34; /&gt;
-&lt;img src=&#34;http://i.imgur.com/Q50W481.png&#34; alt=&#34;Крок 4&#34; /&gt;
-&lt;img src=&#34;http://i.imgur.com/yzHvHsl.png&#34; alt=&#34;Крок 5&#34; /&gt;
-&lt;img src=&#34;http://i.imgur.com/5VnXt5Y.png&#34; alt=&#34;Крок 6&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;перший-запуск&#34;&gt;Перший запуск&lt;/h2&gt;
-
-&lt;p&gt;Для подальшої роботи необхідно створити навчальний проект. Я, наприклад, створив папку GitTutorial. Тествовий проект доступний в моєму профілі на &lt;a href=&#34;https://github.com/DeadSith/GitTutorial&#34;&gt;GitHub&lt;/a&gt;. Ви можете створити папку з будь-якою назвою, але я рекомендую використовувати зрозумілі назви, а не випадкові послідовності символів. Після створення папки, відкриємо її. Далі відкриємо контекстне меню. Якщо Git встановлений коректно, то в ньому мають з&amp;rsquo;явитися нові пункти: Git Bash Here та Git Gui Here. &lt;img src=&#34;http://i.imgur.com/ytEcgzf.png&#34; alt=&#34;Контекстне меню&#34; /&gt; Вибираємо Git Bash Here. Відкриється наступне вікно: &lt;img src=&#34;http://i.imgur.com/aeOlpZS.png&#34; alt=&#34;Git Bash&#34; /&gt;&lt;br /&gt;
-Якщо шлях до папки або ім&amp;rsquo;я користувача містить неанглійські символи, то вони будуть відображатися некоректно.&lt;br /&gt;
-Виправимо цю помилку:
-&lt;img src=&#34;http://i.imgur.com/Q2Jh7Ip.png&#34; alt=&#34;Покрокова інструкція&#34; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Натискаємо правою кнопкою миші на ярлик у лівому верхньому куті вікна.&lt;/li&gt;
-&lt;li&gt;У меню, що відкрилося, вибираємо пункт Options&amp;hellip;&lt;/li&gt;
-&lt;li&gt;Вибираємо підменю Text.
-
-&lt;ul&gt;
-&lt;li&gt;У списку Locale вибираємо uk_UA(або ru_RU на російській версії Windows).&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Character set, за необхідності, змінюємо на UTF-8.&lt;/li&gt;
-&lt;li&gt;Натискаємо Apply.&lt;/li&gt;
-&lt;li&gt;Натискаємо Save та перезавантажуємо Git Bash.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;початкове-налаштування&#34;&gt;Початкове налаштування&lt;/h2&gt;
-
-&lt;p&gt;На даному етапі у вас уже має бути акаунт на GitHub. Якщо його немає, то необхідно &lt;a href=&#34;https://github.com/join&#34;&gt;зареєструватися&lt;/a&gt;. У більшості випадків достатньо безкоштовного акаунту. На момент написання студенти можуть отримати безкоштовний повний акаунт на Github як частину &lt;a href=&#34;https://education.github.com/pack&#34;&gt;Student Developer Pack&lt;/a&gt;.&lt;br /&gt;
-Далі необхідно налаштувати Git. Тут і надалі, рядки консольного коду, які починаються з &lt;code&gt;$&lt;/code&gt; вводить користувач. Рядки, які не мають цього символу на початку - це результат роботи Git, їх вводити не треба. Сам символ &lt;code&gt;$&lt;/code&gt; користувач вводити не має, це автоматично робить Bash. Git Bash підтримує копіювання і вставлення тексту. Для вставлення необхідно натиснути Shift+Ins, копіювання - Ctrl+Ins. Для налаштування необхідно ввести наступні команди&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-$ git config --global user.name &amp;quot;&amp;lt;Ваше ім`я&amp;gt;&amp;quot;
-$ git config --global user.email &amp;lt;e-mail, який ви використали при реєстрації на GitHub&amp;gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;E-mail має збігатися для коректної роботи GitHub.&lt;/p&gt;
-
-&lt;h2 id=&#34;завершення&#34;&gt;Завершення&lt;/h2&gt;
-
-&lt;p&gt;На цьому установка і перше налаштування Git завершене. У наступній частині я познайомлю вас з основами роботи з Git.&lt;/p&gt;</description>
+&lt;/p&gt;</description>
     </item>
     
   </channel>
